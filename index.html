@@ -112,46 +112,48 @@
   .about-intro{display:grid;grid-template-columns:1.3fr 0.9fr;gap:48px;align-items:stretch;margin-bottom:76px;}
   .about-text{text-align:left;}
   .about-text p{font-size:16.5px;line-height:1.9;color:var(--ink-soft);margin-bottom:20px;}
-.about-quote{
-  position:relative;
-  background: linear-gradient(155deg, #E8D5E0, #DEC5D6);
-  border-radius:24px;
-  padding:44px 36px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  color: var(--ink);
-  overflow:hidden;
-}
-.about-quote::before{
-  content:'\201C';
-  position:absolute;
-  top:-10px; left:20px;
-  font-family:'Cormorant Garamond', serif;
-  font-size:130px;
-  color: rgba(184,92,125,0.12);
-  line-height:1;
-}
-.about-quote p{
-  position:relative;
-  font-family:'Cormorant Garamond', serif;
-  font-style:italic;
-  font-size:23px;
-  line-height:1.5;
-  z-index:1;
-}
-.about-quote span{
-  position:relative;
-  display:block;
-  margin-top:20px;
-  font-family:'Jost', sans-serif;
-  font-style:normal;
-  font-size:12px;
-  letter-spacing:1.5px;
-  text-transform:uppercase;
-  color: var(--ink-soft);
-  z-index:1;
-}
+  .about-quote{
+    position:relative;
+    background: linear-gradient(155deg, #FFE2E1, #FFFAFA);
+    border-radius:24px;
+    padding:44px 36px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    color: var(--ink);
+    overflow:hidden;
+    box-shadow: 0 8px 30px -12px rgba(184,92,125,0.15);
+  }
+  .about-quote::before{
+    content:'\201C';
+    position:absolute;
+    top:-10px; left:20px;
+    font-family:'Cormorant Garamond', serif;
+    font-size:130px;
+    color: rgba(184,92,125,0.12);
+    line-height:1;
+  }
+  .about-quote p{
+    position:relative;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:23px;
+    line-height:1.5;
+    z-index:1;
+    color: var(--ink);
+  }
+  .about-quote span{
+    position:relative;
+    display:block;
+    margin-top:20px;
+    font-family:'Jost', sans-serif;
+    font-style:normal;
+    font-size:12px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color: var(--ink-soft);
+    z-index:1;
+  }
   .about-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:60px;}
   .about-card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:38px 30px;text-align:center;transition:transform .35s ease, box-shadow .35s ease;}
   .about-card:hover{transform:translateY(-6px);box-shadow:0 24px 40px -20px rgba(184,92,125,0.25);}
