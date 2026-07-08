@@ -60,7 +60,6 @@
     z-index:0;
   }
   .hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:64px;align-items:center;position:relative;z-index:1;}
-  /* ---- scroll reveal ---- */
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.22,.61,.36,1), transform .7s cubic-bezier(.22,.61,.36,1);}
   .reveal.in-view{opacity:1;transform:translateY(0);}
   .hero-grid > div:first-child > *{opacity:0;transform:translateY(16px);animation:heroIn .7s cubic-bezier(.22,.61,.36,1) forwards;}
@@ -113,46 +112,46 @@
   .about-intro{display:grid;grid-template-columns:1.3fr 0.9fr;gap:48px;align-items:stretch;margin-bottom:76px;}
   .about-text{text-align:left;}
   .about-text p{font-size:16.5px;line-height:1.9;color:var(--ink-soft);margin-bottom:20px;}
-  .about-quote{
-    position:relative;
-    background:linear-gradient(155deg, var(--accent-deep), #9c4e6c);
-    border-radius:24px;
-    padding:44px 36px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    color:var(--paper);
-    overflow:hidden;
-  }
-  .about-quote::before{
-    content:'\201C';
-    position:absolute;
-    top:-10px; left:20px;
-    font-family:'Cormorant Garamond', serif;
-    font-size:130px;
-    color:rgba(255,255,255,0.16);
-    line-height:1;
-  }
-  .about-quote p{
-    position:relative;
-    font-family:'Cormorant Garamond', serif;
-    font-style:italic;
-    font-size:23px;
-    line-height:1.5;
-    z-index:1;
-  }
-  .about-quote span{
-    position:relative;
-    display:block;
-    margin-top:20px;
-    font-family:'Jost', sans-serif;
-    font-style:normal;
-    font-size:12px;
-    letter-spacing:1.5px;
-    text-transform:uppercase;
-    color:rgba(255,255,255,0.75);
-    z-index:1;
-  }
+.about-quote{
+  position:relative;
+  background: linear-gradient(155deg, #F2BED1, #ECA4C5);
+  border-radius:24px;
+  padding:44px 36px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  color: var(--ink);
+  overflow:hidden;
+}
+.about-quote::before{
+  content:'\201C';
+  position:absolute;
+  top:-10px; left:20px;
+  font-family:'Cormorant Garamond', serif;
+  font-size:130px;
+  color: rgba(184,92,125,0.16);
+  line-height:1;
+}
+.about-quote p{
+  position:relative;
+  font-family:'Cormorant Garamond', serif;
+  font-style:italic;
+  font-size:23px;
+  line-height:1.5;
+  z-index:1;
+}
+.about-quote span{
+  position:relative;
+  display:block;
+  margin-top:20px;
+  font-family:'Jost', sans-serif;
+  font-style:normal;
+  font-size:12px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color: var(--ink-soft);
+  z-index:1;
+}
   .about-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:60px;}
   .about-card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:38px 30px;text-align:center;transition:transform .35s ease, box-shadow .35s ease;}
   .about-card:hover{transform:translateY(-6px);box-shadow:0 24px 40px -20px rgba(184,92,125,0.25);}
@@ -189,13 +188,102 @@
   .goal-icon svg{width:18px;height:18px;color:var(--accent-deep);stroke-width:1.5;}
   .goal-content h4{font-family:'Cormorant Garamond', serif;font-size:18px;font-style:italic;margin-bottom:4px;}
   .goal-content p{font-size:13.5px;color:var(--ink-soft);line-height:1.6;}
-  .portfolio-mission{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:40px 48px;text-align:center;margin-top:20px;}
-  .portfolio-mission h3{font-size:28px;font-style:italic;margin-bottom:20px;}
-  .mission-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;text-align:left;}
-  .mission-item{display:flex;gap:14px;align-items:flex-start;padding:12px 16px;background:var(--bg);border-radius:12px;transition:background .3s ease;}
-  .mission-item:hover{background:var(--bg-alt);}
-  .mission-num{font-family:'Cormorant Garamond', serif;font-size:28px;font-style:italic;color:var(--line);font-weight:600;line-height:1;min-width:36px;}
-  .mission-item p{font-size:14px;color:var(--ink-soft);line-height:1.6;}
+
+  /* ===== MỤC TIÊU PORTFOLIO – TỐI ƯU MỀM MẠI ===== */
+  .portfolio-mission {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    padding: 44px 48px 40px;
+    margin-top: 20px;
+    box-shadow: 0 8px 30px -14px rgba(184,92,125,0.12);
+    transition: transform .35s ease, box-shadow .35s ease;
+  }
+  .portfolio-mission:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 44px -18px rgba(184,92,125,0.18);
+  }
+  .mission-header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .mission-header h3 {
+    font-size: 30px;
+    font-style: italic;
+    margin-bottom: 6px;
+    color: var(--ink);
+  }
+  .mission-header p {
+    font-size: 15px;
+    color: var(--ink-faint);
+    letter-spacing: 0.3px;
+  }
+  .mission-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .mission-item {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    background: var(--bg);
+    border-radius: 20px;
+    padding: 24px 26px;
+    border: 1px solid transparent;
+    transition: all .35s ease;
+  }
+  .mission-item:hover {
+    background: var(--paper);
+    border-color: var(--accent);
+    box-shadow: 0 10px 28px -16px rgba(184,92,125,0.20);
+    transform: translateY(-4px);
+  }
+  .mission-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1;
+    min-width: 42px;
+    opacity: 0.6;
+    transition: opacity .3s ease;
+  }
+  .mission-item:hover .mission-num {
+    opacity: 1;
+  }
+  .mission-item p {
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .mission-item p strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  /* RESPONSIVE cho mission */
+  @media (max-width: 700px) {
+    .mission-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .portfolio-mission {
+      padding: 28px 20px 24px;
+    }
+    .mission-header h3 {
+      font-size: 24px;
+    }
+    .mission-item {
+      padding: 18px 20px;
+    }
+    .mission-num {
+      font-size: 28px;
+      min-width: 34px;
+    }
+  }
+
   .assign-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
   .assign-card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:28px 24px 24px;display:flex;flex-direction:column;transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;}
   .assign-card:hover{transform:translateY(-6px);border-color:var(--accent-deep);box-shadow:0 24px 40px -20px rgba(184,92,125,0.25);}
@@ -212,56 +300,326 @@
   .assign-link{display:flex;align-items:center;justify-content:space-between;font-size:13.5px;letter-spacing:0.3px;padding-top:16px;border-top:1px solid var(--line);color:var(--ink);font-weight:500;cursor:pointer;}
   .assign-link svg{width:14px;height:14px;color:var(--accent-deep);transition:transform .3s ease;}
   .assign-card:hover .assign-link svg{transform:translateX(4px);}
-  .summary-grid{
-    display:grid;
-    grid-template-columns:1.05fr 0.95fr;
-    grid-template-areas:
-      "feel   know"
-      "cherish know"
-      "hurdles hurdles"
-      "close  close";
-    gap:26px;
-    max-width:1000px;
-    margin:0 auto;
+
+  /* ===== TỔNG KẾT MỀM MẠI ===== */
+  .summary-soft {
+    max-width: 1040px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
   }
-  .summary-item{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:34px 30px;transition:transform .35s ease, box-shadow .35s ease;}
-  .summary-item:hover{transform:translateY(-4px);box-shadow:0 20px 35px -16px rgba(184,92,125,0.2);}
-  .summary-item .sum-icon{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--bg-alt);margin-bottom:14px;}
-  .summary-item .sum-icon svg{width:20px;height:20px;color:var(--accent-deep);stroke-width:1.5;}
-  .summary-item h3{font-size:20px;font-style:italic;margin-bottom:8px;}
-  .summary-item p{font-size:14.5px;line-height:1.8;color:var(--ink-soft);}
-  .summary-item ul{list-style:none;padding:0;margin-top:8px;}
-  .summary-item ul li{font-size:14px;line-height:1.7;color:var(--ink-soft);padding:6px 0 6px 28px;position:relative;}
-  .summary-item ul li::before{content:'';position:absolute;left:0;top:14px;width:6px;height:6px;border-radius:50%;background:var(--accent-deep);opacity:0.4;}
-  .sum-feel{grid-area:feel;background:linear-gradient(160deg, var(--ink) 0%, #57394a 100%);border:none;color:var(--paper);display:flex;flex-direction:column;justify-content:center;}
-  .sum-feel .sum-icon{background:rgba(255,255,255,0.12);}
-  .sum-feel .sum-icon svg{color:var(--accent);}
-  .sum-feel h3{color:var(--paper);}
-  .sum-feel p{color:rgba(255,253,253,0.78);}
-  .sum-know{grid-area:know;}
-  .sum-cherish{grid-area:cherish;}
-  .sum-hurdles{grid-area:hurdles;}
-  .sum-hurdles .challenges-row{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:6px;}
-  .challenge-item{padding:0;border:none;}
-  .challenge-item strong{color:var(--ink);font-weight:500;display:block;font-size:15px;margin-bottom:6px;}
-  .challenge-item .solution{font-size:13.5px;line-height:1.65;color:var(--ink-soft);padding-left:14px;border-left:2px solid var(--accent);}
-  .summary-item.full{grid-column:1/-1;}
-  .sum-close{
-    background:var(--bg-alt);
-    border-color:var(--line);
-    text-align:center;
-    padding:44px 60px;
+  .sum-feel-soft {
+    position: relative;
+    background: linear-gradient(145deg, #fcf4f7, #f8e8ee);
+    border-radius: 28px;
+    padding: 40px 44px 36px;
+    border: 1px solid rgba(253, 206, 223, 0.5);
+    box-shadow: 0 12px 40px -16px rgba(184, 92, 125, 0.18);
+    overflow: hidden;
+    transition: transform .35s ease, box-shadow .35s ease;
   }
-  .sum-close .sum-icon{margin:0 auto 16px;}
-  .sum-close p{max-width:680px;margin:0 auto;}
+  .sum-feel-soft:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 48px -18px rgba(184, 92, 125, 0.25);
+  }
+  .sum-feel-inner {
+    display: flex;
+    gap: 28px;
+    align-items: flex-start;
+    position: relative;
+    z-index: 2;
+  }
+  .sum-feel-soft .sum-icon-wrap {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px -8px rgba(184, 92, 125, 0.20);
+  }
+  .sum-feel-soft .sum-icon-wrap svg {
+    width: 24px;
+    height: 24px;
+    color: var(--accent-deep);
+    stroke-width: 1.6;
+  }
+  .sum-feel-text h3 {
+    font-size: 24px;
+    font-style: italic;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .sum-feel-text p {
+    font-size: 15.5px;
+    line-height: 1.9;
+    color: var(--ink-soft);
+    max-width: 780px;
+  }
+  .sum-feel-deco {
+    position: absolute;
+    bottom: -40px;
+    right: -20px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 70% 70%, rgba(242, 190, 209, 0.40), transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .sum-two-col {
+    display: grid;
+    grid-template-columns: 1.3fr 0.9fr;
+    gap: 28px;
+  }
+  .sum-know-soft,
+  .sum-cherish-soft {
+    background: var(--paper);
+    border-radius: 24px;
+    padding: 32px 30px 28px;
+    border: 1px solid var(--line);
+    box-shadow: 0 6px 24px -12px rgba(184, 92, 125, 0.10);
+    transition: transform .35s ease, box-shadow .35s ease;
+  }
+  .sum-know-soft:hover,
+  .sum-cherish-soft:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px -14px rgba(184, 92, 125, 0.18);
+  }
+  .sum-know-soft .sum-icon-wrap,
+  .sum-cherish-soft .sum-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+  .sum-know-soft .sum-icon-wrap svg,
+  .sum-cherish-soft .sum-icon-wrap svg {
+    width: 20px;
+    height: 20px;
+    color: var(--accent-deep);
+    stroke-width: 1.6;
+  }
+  .sum-know-soft h3,
+  .sum-cherish-soft h3 {
+    font-size: 20px;
+    font-style: italic;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .skill-list-soft {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .skill-list-soft li {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    padding: 5px 0 5px 28px;
+    position: relative;
+  }
+  .skill-dot {
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+  }
+  .skill-list-soft li strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .sum-cherish-soft p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+  .cherish-accent {
+    font-size: 18px;
+    color: var(--accent);
+    text-align: right;
+    opacity: 0.6;
+    letter-spacing: 2px;
+  }
+  .sum-hurdles-soft {
+    background: var(--paper);
+    border-radius: 28px;
+    padding: 40px 40px 36px;
+    border: 1px solid var(--line);
+    box-shadow: 0 6px 24px -12px rgba(184, 92, 125, 0.10);
+    transition: transform .35s ease, box-shadow .35s ease;
+  }
+  .sum-hurdles-soft:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px -16px rgba(184, 92, 125, 0.16);
+  }
+  .sum-hurdles-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .sum-hurdles-head .sum-icon-wrap {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--bg-alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .sum-hurdles-head .sum-icon-wrap svg {
+    width: 22px;
+    height: 22px;
+    color: var(--accent-deep);
+    stroke-width: 1.6;
+  }
+  .sum-hurdles-head h3 {
+    font-size: 22px;
+    font-style: italic;
+    color: var(--ink);
+  }
+  .sum-hurdles-head p {
+    font-size: 14px;
+    color: var(--ink-faint);
+    margin-left: auto;
+  }
+  .challenges-soft {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .challenge-soft {
+    background: var(--bg);
+    border-radius: 18px;
+    padding: 26px 24px 22px;
+    border: 1px solid rgba(253, 206, 223, 0.4);
+    transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+  }
+  .challenge-soft:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 28px -14px rgba(184, 92, 125, 0.16);
+  }
+  .challenge-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--line);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .challenge-content h4 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .challenge-content > p {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+  .challenge-solution {
+    background: var(--paper);
+    border-radius: 12px;
+    padding: 14px 16px;
+    border-left: 3px solid var(--accent);
+  }
+  .solution-label {
+    display: block;
+    font-size: 11.5px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+  .challenge-solution p {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .sum-close-soft {
+    background: linear-gradient(145deg, #fcf4f7, #f8e8ee);
+    border-radius: 28px;
+    padding: 40px 48px 36px;
+    border: 1px solid rgba(253, 206, 223, 0.5);
+    box-shadow: 0 8px 32px -16px rgba(184, 92, 125, 0.14);
+    text-align: center;
+    transition: transform .35s ease, box-shadow .35s ease;
+  }
+  .sum-close-soft:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 44px -18px rgba(184, 92, 125, 0.22);
+  }
+  .sum-close-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .sum-close-soft .sum-icon-wrap {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+    box-shadow: 0 6px 18px -8px rgba(184, 92, 125, 0.16);
+  }
+  .sum-close-soft .sum-icon-wrap svg {
+    width: 22px;
+    height: 22px;
+    color: var(--accent-deep);
+    stroke-width: 1.6;
+  }
+  .sum-close-soft h3 {
+    font-size: 24px;
+    font-style: italic;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .sum-close-soft p {
+    font-size: 15.5px;
+    line-height: 1.9;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .close-signature {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--accent-deep);
+    letter-spacing: 1px;
+  }
+
   footer{text-align:center;padding:36px 0 24px;font-size:12.5px;color:var(--ink-faint);letter-spacing:0.3px;}
+  
   @media (max-width:900px){
     .wrap, .nav-inner{padding-left:26px;padding-right:26px;}
     .hero-grid{grid-template-columns:1fr;gap:56px;}
     .hero h1{font-size:46px;}
     .portrait-wrap{order:-1;}
     .portrait-ring{width:220px;height:220px;}
-    .about-cards, .assign-grid, .summary-grid{grid-template-columns:1fr;}
+    .about-cards, .assign-grid, .summary-soft .sum-two-col{grid-template-columns:1fr;}
     .about-intro{grid-template-columns:1fr;gap:28px;}
     .about-quote{padding:32px 26px;}
     .goal-row{grid-template-columns:1fr;gap:16px;}
@@ -269,12 +627,25 @@
     .nav-links{gap:20px;font-size:13px;}
     section{padding:60px 0;}
     .stats{gap:32px;}
-    .summary-grid{grid-template-columns:1fr;grid-template-areas:"feel" "know" "cherish" "hurdles" "close";}
-    .summary-item.full, .sum-close{grid-column:1;padding:34px 26px;}
-    .sum-hurdles .challenges-row{grid-template-columns:1fr;gap:18px;}
+    .sum-feel-soft { padding: 28px 22px 24px; }
+    .sum-feel-inner { flex-direction: column; gap: 16px; }
+    .sum-know-soft, .sum-cherish-soft { padding: 24px 20px 20px; }
+    .sum-hurdles-soft { padding: 28px 20px 24px; }
+    .sum-hurdles-head { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .sum-hurdles-head p { margin-left: 0; }
+    .challenges-soft { grid-template-columns: 1fr; gap: 16px; }
+    .sum-close-soft { padding: 30px 22px 26px; }
+    .sum-feel-soft .sum-icon-wrap { width: 48px; height: 48px; }
+    .sum-feel-soft .sum-icon-wrap svg { width: 20px; height: 20px; }
+    .sum-feel-text h3 { font-size: 20px; }
+    .sum-feel-text p { font-size: 14.5px; }
+    .sum-know-soft h3, .sum-cherish-soft h3 { font-size: 18px; }
+    .sum-hurdles-head h3 { font-size: 19px; }
+    .sum-close-soft h3 { font-size: 20px; }
+    .sum-close-soft p { font-size: 14.5px; }
+    .close-signature { font-size: 17px; }
     .contact-lite{flex-direction:column;gap:8px;}
-    .mission-grid{grid-template-columns:1fr;}
-    .portfolio-mission{padding:30px 20px;}
+    .assign-grid{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -380,16 +751,33 @@
           <div class="goal-content"><h4>Học tập chủ động</h4><p>Phát triển khả năng tự nghiên cứu và làm việc độc lập cũng như hợp tác nhóm</p></div>
         </div>
       </div>
+
+      <!-- ===== MỤC TIÊU PORTFOLIO – ĐÃ TỐI ƯU ===== -->
       <div class="portfolio-mission reveal">
-        <h3>Mục tiêu của Portfolio</h3>
-        <p style="color:var(--ink-soft); margin-bottom:24px;">Portfolio này được xây dựng nhằm:</p>
+        <div class="mission-header">
+          <h3>Mục tiêu của Portfolio</h3>
+          <p>Portfolio này được xây dựng nhằm:</p>
+        </div>
         <div class="mission-grid">
-          <div class="mission-item"><span class="mission-num">1</span><p>Tổng hợp và lưu trữ các sản phẩm học tập đã thực hiện trong học phần.</p></div>
-          <div class="mission-item"><span class="mission-num">2</span><p>Thể hiện quá trình phát triển các kỹ năng số và khả năng ứng dụng công nghệ.</p></div>
-          <div class="mission-item"><span class="mission-num">3</span><p>Ghi lại những kiến thức, kinh nghiệm và bài học đã tích lũy được trong suốt quá trình học tập.</p></div>
-          <div class="mission-item"><span class="mission-num">4</span><p>Tạo nguồn tài liệu tham khảo thuận tiện cho việc đánh giá, theo dõi và chia sẻ kết quả học tập trong tương lai.</p></div>
+          <div class="mission-item">
+            <span class="mission-num">01</span>
+            <p>Tổng hợp và lưu trữ các sản phẩm học tập đã thực hiện trong học phần.</p>
+          </div>
+          <div class="mission-item">
+            <span class="mission-num">02</span>
+            <p>Thể hiện quá trình phát triển các kỹ năng số và khả năng ứng dụng công nghệ.</p>
+          </div>
+          <div class="mission-item">
+            <span class="mission-num">03</span>
+            <p>Ghi lại những kiến thức, kinh nghiệm và bài học đã tích lũy được trong suốt quá trình học tập.</p>
+          </div>
+          <div class="mission-item">
+            <span class="mission-num">04</span>
+            <p>Tạo nguồn tài liệu tham khảo thuận tiện cho việc đánh giá, theo dõi và chia sẻ kết quả học tập trong tương lai.</p>
+          </div>
         </div>
       </div>
+
     </div>
   </section>
 </div>
@@ -456,49 +844,125 @@
 </div>
 
 <div id="page-summary" class="page-section">
-  <section style="padding-top:80px;">
+  <section style="padding-top:80px; padding-bottom:60px;">
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow">Tổng kết</div>
         <h2>Nhìn lại hành trình học tập</h2>
         <p>Những kiến thức đã tích lũy và kinh nghiệm quý báu</p>
       </div>
-      <div class="summary-grid">
-        <div class="summary-item sum-feel reveal">
-          <div class="sum-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-          <h3>Cảm nhận</h3>
-          <p>Quá trình xây dựng Portfolio đã mang lại cho mình nhiều trải nghiệm hữu ích. Thông qua việc hoàn thành các bài tập và tổng hợp sản phẩm học tập, mình có cơ hội nhìn lại toàn bộ quá trình học tập cũng như đánh giá sự tiến bộ của bản thân. Đây không chỉ là nơi lưu trữ kết quả học tập mà còn là minh chứng cho những nỗ lực và sự phát triển của mình.</p>
+
+      <div class="summary-soft">
+        <!-- Cảm nhận -->
+        <div class="sum-feel-soft reveal">
+          <div class="sum-feel-inner">
+            <div class="sum-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5Z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <div class="sum-feel-text">
+              <h3>Cảm nhận</h3>
+              <p>Quá trình xây dựng Portfolio đã mang lại cho mình nhiều trải nghiệm hữu ích. Thông qua việc hoàn thành các bài tập và tổng hợp sản phẩm học tập, mình có cơ hội nhìn lại toàn bộ quá trình học tập cũng như đánh giá sự tiến bộ của bản thân. Đây không chỉ là nơi lưu trữ kết quả học tập mà còn là minh chứng cho những nỗ lực và sự phát triển của mình.</p>
+            </div>
+          </div>
+          <div class="sum-feel-deco"></div>
         </div>
-        <div class="summary-item sum-know reveal">
-          <div class="sum-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h6"/></svg></div>
-          <h3>Kiến thức &amp; kỹ năng đã học</h3>
-          <ul>
-            <li><strong>Kiến thức công nghệ cơ bản</strong> – Hiểu biết về máy tính, thiết bị ngoại vi và môi trường số</li>
-            <li><strong>Kỹ năng khai thác thông tin</strong> – Đánh giá và sử dụng thông tin Internet hiệu quả</li>
-            <li><strong>Hiểu biết về AI</strong> – Kiến thức về trí tuệ nhân tạo và ứng dụng trong học tập</li>
-            <li><strong>Kỹ năng giao tiếp số</strong> – Hợp tác và làm việc trong môi trường số</li>
-            <li><strong>Sáng tạo nội dung</strong> – Tạo nội dung số phục vụ học tập và chia sẻ</li>
-            <li><strong>An toàn số</strong> – Nhận thức về an toàn thông tin và đạo đức số</li>
-          </ul>
-        </div>
-        <div class="summary-item sum-cherish reveal">
-          <div class="sum-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-          <h3>Điều tâm đắc nhất</h3>
-          <p>Điều mình tâm đắc nhất là việc được tiếp cận với nhiều công cụ công nghệ mới và hiểu rõ hơn về vai trò của chuyển đổi số trong giáo dục. Đặc biệt, những kiến thức liên quan đến trí tuệ nhân tạo và an toàn số đã giúp mình nâng cao nhận thức về việc sử dụng công nghệ một cách hiệu quả và có trách nhiệm.</p>
-        </div>
-        <div class="summary-item sum-hurdles full reveal">
-          <div class="sum-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg></div>
-          <h3>Thách thức đã vượt qua</h3>
-          <div class="challenges-row">
-            <div class="challenge-item"><strong>Quản lý thời gian</strong><div class="solution">Khó khăn trong việc cân bằng giữa học chuyên ngành và các nhiệm vụ kỹ năng số. <em>Cách khắc phục:</em> Lập kế hoạch chi tiết và ưu tiên công việc theo mức độ quan trọng.</div></div>
-            <div class="challenge-item"><strong>Tổng hợp tài liệu</strong><div class="solution">Thử thách trong việc tổ chức và trình bày nội dung một cách mạch lạc. <em>Cách khắc phục:</em> Áp dụng các phương pháp ghi chú hiệu quả và sử dụng công cụ hỗ trợ.</div></div>
-            <div class="challenge-item"><strong>Làm quen công cụ mới</strong><div class="solution">Khó khăn khi tiếp cận với các công cụ công nghệ chưa từng sử dụng. <em>Cách khắc phục:</em> Tự học qua tài liệu, thực hành đều đặn và tìm kiếm sự hỗ trợ khi cần.</div></div>
+
+        <!-- 2 cột -->
+        <div class="sum-two-col reveal">
+          <div class="sum-know-soft">
+            <div class="sum-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 6h16M4 12h10M4 18h6"/>
+              </svg>
+            </div>
+            <h3>Kiến thức &amp; kỹ năng đã học</h3>
+            <ul class="skill-list-soft">
+              <li><span class="skill-dot"></span><strong>Kiến thức công nghệ cơ bản</strong> – Hiểu biết về máy tính, thiết bị ngoại vi và môi trường số</li>
+              <li><span class="skill-dot"></span><strong>Kỹ năng khai thác thông tin</strong> – Đánh giá và sử dụng thông tin Internet hiệu quả</li>
+              <li><span class="skill-dot"></span><strong>Hiểu biết về AI</strong> – Kiến thức về trí tuệ nhân tạo và ứng dụng trong học tập</li>
+              <li><span class="skill-dot"></span><strong>Kỹ năng giao tiếp số</strong> – Hợp tác và làm việc trong môi trường số</li>
+              <li><span class="skill-dot"></span><strong>Sáng tạo nội dung</strong> – Tạo nội dung số phục vụ học tập và chia sẻ</li>
+              <li><span class="skill-dot"></span><strong>An toàn số</strong> – Nhận thức về an toàn thông tin và đạo đức số</li>
+            </ul>
+          </div>
+          <div class="sum-cherish-soft">
+            <div class="sum-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <h3>Điều tâm đắc nhất</h3>
+            <p>Điều mình tâm đắc nhất là việc được tiếp cận với nhiều công cụ công nghệ mới và hiểu rõ hơn về vai trò của chuyển đổi số trong giáo dục. Đặc biệt, những kiến thức liên quan đến trí tuệ nhân tạo và an toàn số đã giúp mình nâng cao nhận thức về việc sử dụng công nghệ một cách hiệu quả và có trách nhiệm.</p>
+            <div class="cherish-accent">✦</div>
           </div>
         </div>
-        <div class="summary-item full sum-close reveal">
-          <div class="sum-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-          <h3>Kết luận</h3>
-          <p>Portfolio này đánh dấu một chặng đường học tập ý nghĩa, giúp mình hệ thống hóa kiến thức và nhìn nhận rõ hơn sự phát triển của bản thân. Trong tương lai, mình sẽ tiếp tục trau dồi các kỹ năng số, nâng cao năng lực chuyên môn và ứng dụng hiệu quả công nghệ vào học tập cũng như công việc. Mình tin rằng sự kết hợp giữa ngôn ngữ và công nghệ sẽ là chìa khóa để mở ra nhiều cơ hội mới.</p>
+
+        <!-- Thách thức -->
+        <div class="sum-hurdles-soft reveal">
+          <div class="sum-hurdles-head">
+            <div class="sum-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 8v5M12 16h.01"/>
+              </svg>
+            </div>
+            <h3>Thách thức đã vượt qua</h3>
+            <p>Những khó khăn trong quá trình học và cách mình đã vượt qua</p>
+          </div>
+          <div class="challenges-soft">
+            <div class="challenge-soft">
+              <div class="challenge-num">01</div>
+              <div class="challenge-content">
+                <h4>Quản lý thời gian</h4>
+                <p>Khó khăn trong việc cân bằng giữa học chuyên ngành và các nhiệm vụ kỹ năng số.</p>
+                <div class="challenge-solution">
+                  <span class="solution-label">✦ Cách khắc phục</span>
+                  <p>Lập kế hoạch chi tiết và ưu tiên công việc theo mức độ quan trọng.</p>
+                </div>
+              </div>
+            </div>
+            <div class="challenge-soft">
+              <div class="challenge-num">02</div>
+              <div class="challenge-content">
+                <h4>Tổng hợp tài liệu</h4>
+                <p>Thử thách trong việc tổ chức và trình bày nội dung một cách mạch lạc.</p>
+                <div class="challenge-solution">
+                  <span class="solution-label">✦ Cách khắc phục</span>
+                  <p>Áp dụng các phương pháp ghi chú hiệu quả và sử dụng công cụ hỗ trợ.</p>
+                </div>
+              </div>
+            </div>
+            <div class="challenge-soft">
+              <div class="challenge-num">03</div>
+              <div class="challenge-content">
+                <h4>Làm quen công cụ mới</h4>
+                <p>Khó khăn khi tiếp cận với các công cụ công nghệ chưa từng sử dụng.</p>
+                <div class="challenge-solution">
+                  <span class="solution-label">✦ Cách khắc phục</span>
+                  <p>Tự học qua tài liệu, thực hành đều đặn và tìm kiếm sự hỗ trợ khi cần.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kết luận -->
+        <div class="sum-close-soft reveal">
+          <div class="sum-close-inner">
+            <div class="sum-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <h3>Kết luận</h3>
+            <p>Portfolio này đánh dấu một chặng đường học tập ý nghĩa, giúp mình hệ thống hóa kiến thức và nhìn nhận rõ hơn sự phát triển của bản thân. Trong tương lai, mình sẽ tiếp tục trau dồi các kỹ năng số, nâng cao năng lực chuyên môn và ứng dụng hiệu quả công nghệ vào học tập cũng như công việc. Mình tin rằng sự kết hợp giữa ngôn ngữ và công nghệ sẽ là chìa khóa để mở ra nhiều cơ hội mới.</p>
+            <div class="close-signature">Bùi Quỳnh Anh</div>
+          </div>
         </div>
       </div>
     </div>
@@ -517,7 +981,6 @@
   };
   const navLinks = document.querySelectorAll('.nav-links a');
 
-  // ---- Scroll-reveal animation ----
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry, idx) => {
       if (entry.isIntersecting) {
