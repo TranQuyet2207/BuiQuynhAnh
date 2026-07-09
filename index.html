@@ -23,8 +23,8 @@
   html{scroll-behavior:smooth;}
   body{background:var(--bg);color:var(--ink);font-family:'Times New Roman', Times, serif;font-weight:400;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
   
-  /* BONG BÓNG HỒNG MỜ PHỦ TOÀN TRANG */
-  .bubble-bg {
+  /* CÁNH HOA ANH ĐÀO RƠI MỜ - MẶC ĐỊNH MÀU HỒNG */
+  .petals-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -34,30 +34,136 @@
     z-index: 0;
     overflow: hidden;
   }
-  .bubble {
+  .petal {
     position: absolute;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, rgba(242, 190, 209, 0.25), rgba(242, 190, 209, 0.05));
-    border: 1px solid rgba(253, 206, 223, 0.15);
-    animation: bubbleFloat linear infinite;
+    top: -60px;
+    width: 14px;
+    height: 18px;
+    opacity: 0.4;
+    border-radius: 50% 0 50% 50%;
+    background: radial-gradient(ellipse at 30% 30%, #fcc9d9, #f7b8cc);
+    transform-origin: center center;
+    animation: petalFall linear infinite;
+    filter: blur(0.5px);
   }
-  .bubble:nth-child(1) { width: 80px; height: 80px; top: 5%; left: 3%; animation-duration: 18s; }
-  .bubble:nth-child(2) { width: 120px; height: 120px; top: 15%; right: 8%; animation-duration: 22s; animation-delay: 2s; }
-  .bubble:nth-child(3) { width: 60px; height: 60px; top: 40%; left: 2%; animation-duration: 15s; animation-delay: 4s; }
-  .bubble:nth-child(4) { width: 150px; height: 150px; top: 55%; right: 3%; animation-duration: 25s; animation-delay: 1s; }
-  .bubble:nth-child(5) { width: 90px; height: 90px; top: 75%; left: 8%; animation-duration: 20s; animation-delay: 3s; }
-  .bubble:nth-child(6) { width: 180px; height: 180px; top: 85%; right: 10%; animation-duration: 28s; animation-delay: 0s; }
-  .bubble:nth-child(7) { width: 50px; height: 50px; top: 25%; left: 15%; animation-duration: 12s; animation-delay: 5s; }
-  .bubble:nth-child(8) { width: 100px; height: 100px; top: 65%; left: 20%; animation-duration: 19s; animation-delay: 2.5s; }
-  .bubble:nth-child(9) { width: 70px; height: 70px; top: 10%; left: 40%; animation-duration: 16s; animation-delay: 1.5s; }
-  .bubble:nth-child(10) { width: 130px; height: 130px; top: 45%; left: 35%; animation-duration: 24s; animation-delay: 3.5s; }
+  .petal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50% 0 50% 50%;
+    background: radial-gradient(ellipse at 60% 60%, rgba(255, 220, 235, 0.3), transparent);
+  }
+  .petal:nth-child(1) { left: 5%; animation-duration: 12s; animation-delay: 0s; width: 12px; height: 16px; opacity: 0.35; }
+  .petal:nth-child(2) { left: 12%; animation-duration: 15s; animation-delay: 2s; width: 16px; height: 20px; opacity: 0.3; }
+  .petal:nth-child(3) { left: 20%; animation-duration: 10s; animation-delay: 4s; width: 10px; height: 14px; opacity: 0.4; }
+  .petal:nth-child(4) { left: 28%; animation-duration: 18s; animation-delay: 1s; width: 14px; height: 18px; opacity: 0.25; }
+  .petal:nth-child(5) { left: 35%; animation-duration: 13s; animation-delay: 3s; width: 18px; height: 22px; opacity: 0.3; }
+  .petal:nth-child(6) { left: 42%; animation-duration: 16s; animation-delay: 5s; width: 11px; height: 15px; opacity: 0.35; }
+  .petal:nth-child(7) { left: 50%; animation-duration: 11s; animation-delay: 2s; width: 15px; height: 19px; opacity: 0.4; }
+  .petal:nth-child(8) { left: 58%; animation-duration: 19s; animation-delay: 4s; width: 13px; height: 17px; opacity: 0.25; }
+  .petal:nth-child(9) { left: 65%; animation-duration: 14s; animation-delay: 1s; width: 17px; height: 21px; opacity: 0.3; }
+  .petal:nth-child(10) { left: 72%; animation-duration: 17s; animation-delay: 3s; width: 10px; height: 13px; opacity: 0.35; }
+  .petal:nth-child(11) { left: 80%; animation-duration: 12s; animation-delay: 5s; width: 16px; height: 20px; opacity: 0.3; }
+  .petal:nth-child(12) { left: 88%; animation-duration: 15s; animation-delay: 2s; width: 12px; height: 16px; opacity: 0.4; }
+  .petal:nth-child(13) { left: 95%; animation-duration: 20s; animation-delay: 4s; width: 14px; height: 18px; opacity: 0.25; }
+  .petal:nth-child(14) { left: 8%; animation-duration: 16s; animation-delay: 6s; width: 9px; height: 12px; opacity: 0.3; }
+  .petal:nth-child(15) { left: 45%; animation-duration: 14s; animation-delay: 7s; width: 13px; height: 17px; opacity: 0.35; }
   
-  @keyframes bubbleFloat {
-    0% { transform: translateY(0px) scale(1) rotate(0deg); opacity: 0.6; }
-    25% { transform: translateY(-30px) scale(1.05) rotate(5deg); opacity: 0.8; }
-    50% { transform: translateY(20px) scale(0.95) rotate(-3deg); opacity: 0.5; }
-    75% { transform: translateY(-15px) scale(1.02) rotate(4deg); opacity: 0.7; }
-    100% { transform: translateY(0px) scale(1) rotate(0deg); opacity: 0.6; }
+  .petal:nth-child(odd) {
+    animation-name: petalFallLeft;
+  }
+  .petal:nth-child(even) {
+    animation-name: petalFallRight;
+  }
+  
+  @keyframes petalFall {
+    0% {
+      transform: translateY(0) rotate(0deg) scale(1);
+      opacity: 0.4;
+    }
+    25% {
+      transform: translateY(25vh) rotate(90deg) scale(1.05);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateY(50vh) rotate(180deg) scale(0.95);
+      opacity: 0.3;
+    }
+    75% {
+      transform: translateY(75vh) rotate(270deg) scale(1.02);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(110vh) rotate(360deg) scale(0.9);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes petalFallLeft {
+    0% {
+      transform: translateY(0) rotate(0deg) translateX(0);
+      opacity: 0.4;
+    }
+    25% {
+      transform: translateY(25vh) rotate(60deg) translateX(-20px);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateY(50vh) rotate(120deg) translateX(-10px);
+      opacity: 0.3;
+    }
+    75% {
+      transform: translateY(75vh) rotate(180deg) translateX(-25px);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(110vh) rotate(240deg) translateX(-15px);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes petalFallRight {
+    0% {
+      transform: translateY(0) rotate(0deg) translateX(0);
+      opacity: 0.4;
+    }
+    25% {
+      transform: translateY(25vh) rotate(-60deg) translateX(20px);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateY(50vh) rotate(-120deg) translateX(10px);
+      opacity: 0.3;
+    }
+    75% {
+      transform: translateY(75vh) rotate(-180deg) translateX(25px);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(110vh) rotate(-240deg) translateX(15px);
+      opacity: 0;
+    }
+  }
+
+  /* CÁNH HOA MÀU TRẮNG CHO TRANG DỰ ÁN (NỀN HỒNG) */
+  #page-assignments .petal {
+    background: radial-gradient(ellipse at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 240, 245, 0.7));
+    opacity: 0.3;
+  }
+  #page-assignments .petal::before {
+    background: radial-gradient(ellipse at 60% 60%, rgba(255, 255, 255, 0.5), transparent);
+  }
+
+  /* CÁNH HOA MÀU TRẮNG CHO TRANG TỔNG KẾT (NỀN HỒNG NHẠT) */
+  #page-summary .petal {
+    background: radial-gradient(ellipse at 30% 30%, rgba(255, 255, 255, 0.85), rgba(255, 235, 240, 0.6));
+    opacity: 0.3;
+  }
+  #page-summary .petal::before {
+    background: radial-gradient(ellipse at 60% 60%, rgba(255, 255, 255, 0.4), transparent);
   }
 
   /* TIÊU ĐỀ IN ĐẬM VẪN GIỮ FONT CŨ */
@@ -661,7 +767,6 @@
     .sum-close-soft p { font-size: 14.5px; }
     .close-signature { font-size: 17px; }
     .assign-grid{grid-template-columns:1fr;}
-    .bubble { display: none; }
     .to-top{right:18px;bottom:18px;}
   }
 
@@ -673,24 +778,38 @@
       transition-duration:.01ms !important;
     }
     html{scroll-behavior:auto;}
-    .bubble{opacity:.35;}
+    .petal{opacity:.08;}
+  }
+  /* BẬT CÁNH HOA CHO TRANG DỰ ÁN */
+  #page-assignments .petal {
+    display: block !important;
+    background: radial-gradient(ellipse at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 240, 245, 0.7)) !important;
+    opacity: 0.3 !important;
+  }
+  #page-assignments .petal::before {
+    background: radial-gradient(ellipse at 60% 60%, rgba(255, 255, 255, 0.5), transparent) !important;
   }
 </style>
 </head>
 <body>
 
-<!-- BONG BÓNG HỒNG MỜ PHỦ TOÀN TRANG -->
-<div class="bubble-bg">
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
+<!-- CÁNH HOA ANH ĐÀO RƠI MỜ -->
+<div class="petals-container">
+  <div class="petal"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
+  <div class="petal"></div>
 </div>
 
 <nav>
