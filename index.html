@@ -19,9 +19,22 @@
     --ink-faint:#A98A93;
     --paper:#FFFDFD;
   }
+
+  /* ===== NIGHT MODE — mọi thứ giữ nguyên, chỉ đổi tông màu ===== */
+  body.night-mode{
+    --bg:#130C11;
+    --bg-alt:#1D1319;
+    --line:#3E2530;
+    --accent:#F5B6D3;
+    --accent-deep:#FF97C1;
+    --ink:#F3E6EC;
+    --ink-soft:#CBAFBC;
+    --ink-faint:#8E7684;
+    --paper:#1C1219;
+  }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{background:var(--bg);color:var(--ink);font-family:'Times New Roman', Times, serif;font-weight:400;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  body{background:var(--bg);color:var(--ink);font-family:'Times New Roman', Times, serif;font-weight:400;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background-color .45s ease, color .45s ease;}
   
   /* ===== CÁNH HOA ANH ĐÀO RƠI ===== */
   .petals-container {
@@ -75,6 +88,27 @@
     height: 100%;
     border-radius: 50% 0 50% 50%;
     background: radial-gradient(ellipse at 60% 60%, rgba(255, 255, 255, 0.4), transparent);
+  }
+
+  /* Cánh hoa phát sáng khi ở night mode */
+  body.night-mode .petal{
+    background: radial-gradient(ellipse at 30% 30%, #ffe4f1, #ff9dc9);
+    opacity: 0.85;
+    filter: blur(0.4px);
+    box-shadow:
+      0 0 8px 2px rgba(255, 157, 201, 0.55),
+      0 0 18px 6px rgba(255, 157, 201, 0.30),
+      0 0 30px 10px rgba(255, 157, 201, 0.12);
+    transition: box-shadow .4s ease, opacity .4s ease;
+  }
+  body.night-mode #page-assignments .petal,
+  body.night-mode #page-summary .petal{
+    background: radial-gradient(ellipse at 30% 30%, #ffffff, #ffd3ea);
+    opacity: 0.9;
+    box-shadow:
+      0 0 10px 2px rgba(255, 255, 255, 0.55),
+      0 0 20px 7px rgba(255, 157, 201, 0.35),
+      0 0 32px 10px rgba(255, 157, 201, 0.15);
   }
   
   /* Vị trí và tốc độ từng cánh hoa */
@@ -138,6 +172,7 @@
   .badge{font-size:12.5px;letter-spacing:0.3px;padding:8px 18px;border-radius:100px;border:1px solid var(--line);color:var(--ink-soft);background:var(--paper);font-family:'Times New Roman', Times, serif;transition:transform .3s ease, box-shadow .3s ease;}
   .badge:hover{transform:translateY(-2px);box-shadow:0 8px 18px -10px rgba(184,92,125,0.4);}
   .badge.filled{background:var(--accent);color:var(--ink);border-color:var(--accent);}
+  body.night-mode .badge.filled{color:#2A1420;}
   .badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;}
   .nav-links-wrap{position:relative;}
   .nav-pill{position:absolute;top:0;left:0;height:100%;width:0;border-radius:100px;background:var(--accent);opacity:.55;transition:left .4s cubic-bezier(.22,.61,.36,1), width .4s cubic-bezier(.22,.61,.36,1);pointer-events:none;z-index:0;}
@@ -222,6 +257,7 @@
   .about-intro{display:grid;grid-template-columns:1.3fr 0.9fr;gap:48px;align-items:stretch;margin-bottom:76px;}
   .about-text{text-align:left;}
   .about-text p{font-size:16.5px;line-height:1.9;color:var(--ink-soft);margin-bottom:20px;font-family:'Times New Roman', Times, serif;}
+  body.night-mode .about-quote{background: linear-gradient(155deg, #2B1621, #170D13);}
   .about-quote{
     position:relative;
     background: linear-gradient(155deg, #FFE2E1, #FFFAFA);
@@ -378,6 +414,7 @@
     flex-direction: column;
     gap: 28px;
   }
+  body.night-mode .sum-feel-soft{background: linear-gradient(145deg, #241420, #150C12);}
   .sum-feel-soft {
     position: relative;
     background: linear-gradient(145deg, #fcf4f7, #f8e8ee);
@@ -617,6 +654,7 @@
     margin: 0;
     font-family:'Times New Roman', Times, serif;
   }
+  body.night-mode .sum-close-soft{background: linear-gradient(145deg, #241420, #150C12);}
   .sum-close-soft {
     background: linear-gradient(145deg, #fcf4f7, #f8e8ee);
     border-radius: 28px;
@@ -715,6 +753,8 @@
     .assign-grid{grid-template-columns:1fr;}
     .to-top{right:18px;bottom:18px;}
     .petal { opacity: 0.2 !important; }
+    .theme-toggle{width:34px;height:34px;margin-left:8px;}
+    .theme-toggle svg{width:15px;height:15px;}
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -770,6 +810,73 @@
   #page-assignments {
     background: #FDF0F2 !important;
   }
+
+  /* ===== NIGHT MODE — override các màu nền viết cứng ===== */
+  body.night-mode nav{
+    background: rgba(19, 12, 17, 0.86) !important;
+  }
+  body.night-mode #page-assignments{
+    background: #170E15 !important;
+  }
+  body.night-mode #page-assignments .section-alt{
+    background: #170E15 !important;
+  }
+
+  /* ===== Nút chuyển chế độ sáng/tối ===== */
+  .theme-toggle{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-left: 14px;
+    transition: background .35s ease, border-color .35s ease, transform .3s ease, box-shadow .3s ease;
+  }
+  .theme-toggle:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -12px rgba(184,92,125,0.4);
+  }
+  .theme-toggle svg{
+    width: 18px;
+    height: 18px;
+    color: var(--accent-deep);
+    stroke-width: 1.6;
+    position: absolute;
+    transition: opacity .3s ease, transform .4s ease;
+  }
+  .theme-toggle .icon-sun{ opacity: 1; transform: scale(1) rotate(0deg); }
+  .theme-toggle .icon-moon{ opacity: 0; transform: scale(0.4) rotate(-60deg); }
+  body.night-mode .theme-toggle .icon-sun{ opacity: 0; transform: scale(0.4) rotate(60deg); }
+  body.night-mode .theme-toggle .icon-moon{ opacity: 1; transform: scale(1) rotate(0deg); }
+  .nav-right{ display:flex; align-items:center; }
+
+  /* ===== Vòng sáng theo con trỏ chuột (chỉ hiện ở night mode) ===== */
+  #cursorGlow{
+    position: fixed;
+    top: 0; left: 0;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    background: radial-gradient(circle, rgba(255,151,193,0.38) 0%, rgba(255,151,193,0.14) 38%, rgba(255,151,193,0) 70%);
+    mix-blend-mode: screen;
+    opacity: 0;
+    transition: opacity .5s ease;
+    will-change: transform, opacity;
+  }
+  @media (hover: none), (pointer: coarse){
+    #cursorGlow{ display: none; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    #cursorGlow{ transition: opacity .01ms; }
+  }
 </style>
 </head>
 <body>
@@ -796,16 +903,25 @@
 <nav>
   <div class="nav-inner">
     <div class="nav-logo">Quỳnh Anh</div>
-    <div class="nav-links-wrap">
-      <span class="nav-pill" id="navPill" aria-hidden="true"></span>
-      <ul class="nav-links">
-        <li><a class="active" data-page="about">Giới thiệu</a></li>
-        <li><a data-page="assignments">Dự án</a></li>
-        <li><a data-page="summary">Tổng kết</a></li>
-      </ul>
+    <div class="nav-right">
+      <div class="nav-links-wrap">
+        <span class="nav-pill" id="navPill" aria-hidden="true"></span>
+        <ul class="nav-links">
+          <li><a class="active" data-page="about">Giới thiệu</a></li>
+          <li><a data-page="assignments">Dự án</a></li>
+          <li><a data-page="summary">Tổng kết</a></li>
+        </ul>
+      </div>
+      <button type="button" class="theme-toggle" id="themeToggle" aria-label="Chuyển chế độ sáng/tối" aria-pressed="false">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M4.2 4.2l1.85 1.85M17.95 17.95l1.85 1.85M2.5 12h2.6M18.9 12h2.6M4.2 19.8l1.85-1.85M17.95 6.05l1.85-1.85"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a7 7 0 0 0 10.7 10.7Z"/></svg>
+      </button>
     </div>
   </div>
 </nav>
+
+<!-- VÒNG SÁNG THEO CON TRỎ CHUỘT (chỉ hiện khi bật night mode) -->
+<div id="cursorGlow" aria-hidden="true"></div>
 
 <!-- TRANG GIỚI THIỆU -->
 <div id="page-about" class="page-section active">
@@ -1231,6 +1347,66 @@
     }, 2200);
   }
   window.switchPage = switchPage;
+
+  /* ===== NIGHT MODE: bật/tắt + ghi nhớ lựa chọn ===== */
+  const themeToggle = document.getElementById('themeToggle');
+  const cursorGlow = document.getElementById('cursorGlow');
+  const canHoverMouse = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  function applyGlowVisibility(isNight) {
+    if (!cursorGlow || !canHoverMouse) return;
+    cursorGlow.style.opacity = isNight ? '1' : '0';
+  }
+
+  function setNightMode(isNight, persist) {
+    document.body.classList.toggle('night-mode', isNight);
+    if (themeToggle) themeToggle.setAttribute('aria-pressed', isNight ? 'true' : 'false');
+    applyGlowVisibility(isNight);
+    if (persist) {
+      try { localStorage.setItem('qa-portfolio-theme', isNight ? 'night' : 'day'); } catch (e) {}
+    }
+  }
+
+  let storedTheme = null;
+  try { storedTheme = localStorage.getItem('qa-portfolio-theme'); } catch (e) {}
+  if (storedTheme === 'night') {
+    setNightMode(true, false);
+  } else if (storedTheme === null && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    setNightMode(true, false);
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      setNightMode(!document.body.classList.contains('night-mode'), true);
+    });
+  }
+
+  /* ===== Vòng sáng theo con trỏ chuột (mượt bằng nội suy) ===== */
+  if (cursorGlow && canHoverMouse) {
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let glowX = mouseX;
+    let glowY = mouseY;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function trackGlow() {
+      const ease = prefersReducedMotion ? 1 : 0.16;
+      glowX += (mouseX - glowX) * ease;
+      glowY += (mouseY - glowY) * ease;
+      cursorGlow.style.transform = `translate3d(${glowX}px, ${glowY}px, 0) translate(-50%, -50%)`;
+      requestAnimationFrame(trackGlow);
+    }
+    requestAnimationFrame(trackGlow);
+
+    document.addEventListener('mouseleave', () => { cursorGlow.style.opacity = '0'; });
+    document.addEventListener('mouseenter', () => {
+      applyGlowVisibility(document.body.classList.contains('night-mode'));
+    });
+  }
 </script>
 </body>
 </html>
