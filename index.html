@@ -23,29 +23,49 @@
   html{scroll-behavior:smooth;}
   body{background:var(--bg);color:var(--ink);font-family:'Times New Roman', Times, serif;font-weight:400;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
   
-  /* CÁNH HOA ANH ĐÀO RƠI MỜ - MẶC ĐỊNH MÀU HỒNG */
+  /* ===== CÁNH HOA ANH ĐÀO RƠI ===== */
   .petals-container {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     pointer-events: none;
-    z-index: 0;
+    z-index: 9999;
     overflow: hidden;
   }
   .petal {
     position: absolute;
-    top: -60px;
-    width: 14px;
-    height: 18px;
-    opacity: 0.4;
+    top: -80px;
+    width: 20px;
+    height: 26px;
     border-radius: 50% 0 50% 50%;
-    background: radial-gradient(ellipse at 30% 30%, #fcc9d9, #f7b8cc);
     transform-origin: center center;
     animation: petalFall linear infinite;
-    filter: blur(0.5px);
+    filter: blur(0.8px);
+    will-change: transform, opacity;
   }
+  
+  /* Mặc định: Cánh hoa màu hồng cho trang Giới thiệu (nền trắng) */
+  .petal {
+    background: radial-gradient(ellipse at 30% 30%, #fcc9d9, #f7b8cc);
+    opacity: 0.5;
+  }
+  
+  /* Cánh hoa màu trắng cho trang Dự án (nền hồng) */
+  #page-assignments .petal {
+    background: radial-gradient(ellipse at 30% 30%, rgba(255, 255, 255, 0.95), rgba(255, 230, 240, 0.85));
+    opacity: 0.4;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Cánh hoa màu trắng cho trang Tổng kết (nền hồng nhạt) */
+  #page-summary .petal {
+    background: radial-gradient(ellipse at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 235, 240, 0.8));
+    opacity: 0.35;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+  }
+  
   .petal::before {
     content: '';
     position: absolute;
@@ -54,119 +74,48 @@
     width: 100%;
     height: 100%;
     border-radius: 50% 0 50% 50%;
-    background: radial-gradient(ellipse at 60% 60%, rgba(255, 220, 235, 0.3), transparent);
-  }
-  .petal:nth-child(1) { left: 5%; animation-duration: 12s; animation-delay: 0s; width: 12px; height: 16px; opacity: 0.35; }
-  .petal:nth-child(2) { left: 12%; animation-duration: 15s; animation-delay: 2s; width: 16px; height: 20px; opacity: 0.3; }
-  .petal:nth-child(3) { left: 20%; animation-duration: 10s; animation-delay: 4s; width: 10px; height: 14px; opacity: 0.4; }
-  .petal:nth-child(4) { left: 28%; animation-duration: 18s; animation-delay: 1s; width: 14px; height: 18px; opacity: 0.25; }
-  .petal:nth-child(5) { left: 35%; animation-duration: 13s; animation-delay: 3s; width: 18px; height: 22px; opacity: 0.3; }
-  .petal:nth-child(6) { left: 42%; animation-duration: 16s; animation-delay: 5s; width: 11px; height: 15px; opacity: 0.35; }
-  .petal:nth-child(7) { left: 50%; animation-duration: 11s; animation-delay: 2s; width: 15px; height: 19px; opacity: 0.4; }
-  .petal:nth-child(8) { left: 58%; animation-duration: 19s; animation-delay: 4s; width: 13px; height: 17px; opacity: 0.25; }
-  .petal:nth-child(9) { left: 65%; animation-duration: 14s; animation-delay: 1s; width: 17px; height: 21px; opacity: 0.3; }
-  .petal:nth-child(10) { left: 72%; animation-duration: 17s; animation-delay: 3s; width: 10px; height: 13px; opacity: 0.35; }
-  .petal:nth-child(11) { left: 80%; animation-duration: 12s; animation-delay: 5s; width: 16px; height: 20px; opacity: 0.3; }
-  .petal:nth-child(12) { left: 88%; animation-duration: 15s; animation-delay: 2s; width: 12px; height: 16px; opacity: 0.4; }
-  .petal:nth-child(13) { left: 95%; animation-duration: 20s; animation-delay: 4s; width: 14px; height: 18px; opacity: 0.25; }
-  .petal:nth-child(14) { left: 8%; animation-duration: 16s; animation-delay: 6s; width: 9px; height: 12px; opacity: 0.3; }
-  .petal:nth-child(15) { left: 45%; animation-duration: 14s; animation-delay: 7s; width: 13px; height: 17px; opacity: 0.35; }
-  
-  .petal:nth-child(odd) {
-    animation-name: petalFallLeft;
-  }
-  .petal:nth-child(even) {
-    animation-name: petalFallRight;
+    background: radial-gradient(ellipse at 60% 60%, rgba(255, 255, 255, 0.4), transparent);
   }
   
-  @keyframes petalFall {
-    0% {
-      transform: translateY(0) rotate(0deg) scale(1);
-      opacity: 0.4;
-    }
-    25% {
-      transform: translateY(25vh) rotate(90deg) scale(1.05);
-      opacity: 0.5;
-    }
-    50% {
-      transform: translateY(50vh) rotate(180deg) scale(0.95);
-      opacity: 0.3;
-    }
-    75% {
-      transform: translateY(75vh) rotate(270deg) scale(1.02);
-      opacity: 0.5;
-    }
-    100% {
-      transform: translateY(110vh) rotate(360deg) scale(0.9);
-      opacity: 0;
-    }
-  }
+  /* Vị trí và tốc độ từng cánh hoa */
+  .petal:nth-child(1) { left: 3%; animation-duration: 14s; animation-delay: 0s; width: 16px; height: 22px; }
+  .petal:nth-child(2) { left: 10%; animation-duration: 18s; animation-delay: 2s; width: 22px; height: 28px; }
+  .petal:nth-child(3) { left: 17%; animation-duration: 12s; animation-delay: 4s; width: 14px; height: 18px; }
+  .petal:nth-child(4) { left: 24%; animation-duration: 20s; animation-delay: 1s; width: 18px; height: 24px; }
+  .petal:nth-child(5) { left: 31%; animation-duration: 15s; animation-delay: 3s; width: 24px; height: 30px; }
+  .petal:nth-child(6) { left: 38%; animation-duration: 17s; animation-delay: 5s; width: 15px; height: 20px; }
+  .petal:nth-child(7) { left: 45%; animation-duration: 13s; animation-delay: 2s; width: 20px; height: 26px; }
+  .petal:nth-child(8) { left: 52%; animation-duration: 22s; animation-delay: 4s; width: 17px; height: 22px; }
+  .petal:nth-child(9) { left: 59%; animation-duration: 16s; animation-delay: 1s; width: 23px; height: 29px; }
+  .petal:nth-child(10) { left: 66%; animation-duration: 19s; animation-delay: 3s; width: 14px; height: 18px; }
+  .petal:nth-child(11) { left: 73%; animation-duration: 14s; animation-delay: 5s; width: 21px; height: 27px; }
+  .petal:nth-child(12) { left: 80%; animation-duration: 17s; animation-delay: 2s; width: 16px; height: 21px; }
+  .petal:nth-child(13) { left: 87%; animation-duration: 23s; animation-delay: 4s; width: 19px; height: 25px; }
+  .petal:nth-child(14) { left: 94%; animation-duration: 18s; animation-delay: 6s; width: 13px; height: 17px; }
+  .petal:nth-child(15) { left: 50%; animation-duration: 16s; animation-delay: 7s; width: 17px; height: 23px; }
+  
+  .petal:nth-child(odd) { animation-name: petalFallLeft; }
+  .petal:nth-child(even) { animation-name: petalFallRight; }
   
   @keyframes petalFallLeft {
-    0% {
-      transform: translateY(0) rotate(0deg) translateX(0);
-      opacity: 0.4;
-    }
-    25% {
-      transform: translateY(25vh) rotate(60deg) translateX(-20px);
-      opacity: 0.5;
-    }
-    50% {
-      transform: translateY(50vh) rotate(120deg) translateX(-10px);
-      opacity: 0.3;
-    }
-    75% {
-      transform: translateY(75vh) rotate(180deg) translateX(-25px);
-      opacity: 0.5;
-    }
-    100% {
-      transform: translateY(110vh) rotate(240deg) translateX(-15px);
-      opacity: 0;
-    }
+    0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0.5; }
+    20% { transform: translateY(20vh) rotate(40deg) translateX(-30px); opacity: 0.6; }
+    40% { transform: translateY(40vh) rotate(80deg) translateX(-15px); opacity: 0.4; }
+    60% { transform: translateY(60vh) rotate(120deg) translateX(-35px); opacity: 0.5; }
+    80% { transform: translateY(80vh) rotate(160deg) translateX(-20px); opacity: 0.3; }
+    100% { transform: translateY(110vh) rotate(200deg) translateX(-25px); opacity: 0; }
   }
   
   @keyframes petalFallRight {
-    0% {
-      transform: translateY(0) rotate(0deg) translateX(0);
-      opacity: 0.4;
-    }
-    25% {
-      transform: translateY(25vh) rotate(-60deg) translateX(20px);
-      opacity: 0.5;
-    }
-    50% {
-      transform: translateY(50vh) rotate(-120deg) translateX(10px);
-      opacity: 0.3;
-    }
-    75% {
-      transform: translateY(75vh) rotate(-180deg) translateX(25px);
-      opacity: 0.5;
-    }
-    100% {
-      transform: translateY(110vh) rotate(-240deg) translateX(15px);
-      opacity: 0;
-    }
+    0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0.5; }
+    20% { transform: translateY(20vh) rotate(-40deg) translateX(30px); opacity: 0.6; }
+    40% { transform: translateY(40vh) rotate(-80deg) translateX(15px); opacity: 0.4; }
+    60% { transform: translateY(60vh) rotate(-120deg) translateX(35px); opacity: 0.5; }
+    80% { transform: translateY(80vh) rotate(-160deg) translateX(20px); opacity: 0.3; }
+    100% { transform: translateY(110vh) rotate(-200deg) translateX(25px); opacity: 0; }
   }
 
-  /* CÁNH HOA MÀU TRẮNG CHO TRANG DỰ ÁN (NỀN HỒNG) */
-  #page-assignments .petal {
-    background: radial-gradient(ellipse at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 240, 245, 0.7));
-    opacity: 0.3;
-  }
-  #page-assignments .petal::before {
-    background: radial-gradient(ellipse at 60% 60%, rgba(255, 255, 255, 0.5), transparent);
-  }
-
-  /* CÁNH HOA MÀU TRẮNG CHO TRANG TỔNG KẾT (NỀN HỒNG NHẠT) */
-  #page-summary .petal {
-    background: radial-gradient(ellipse at 30% 30%, rgba(255, 255, 255, 0.85), rgba(255, 235, 240, 0.6));
-    opacity: 0.3;
-  }
-  #page-summary .petal::before {
-    background: radial-gradient(ellipse at 60% 60%, rgba(255, 255, 255, 0.4), transparent);
-  }
-
-  /* TIÊU ĐỀ IN ĐẬM VẪN GIỮ FONT CŨ */
+  /* ===== PHẦN CÒN LẠI GIỮ NGUYÊN ===== */
   h1,h2,h3{font-family:'Cormorant Garamond', serif;font-weight:600;color:var(--ink);}
   .nav-logo{font-family:'Cormorant Garamond', serif;font-weight:600;font-size:22px;letter-spacing:0.5px;}
   .stat b{display:block;font-family:'Cormorant Garamond', serif;font-size:32px;font-weight:600;color:var(--ink);}
@@ -196,7 +145,6 @@
   #greetword{font-style:italic;font-family:'Cormorant Garamond', serif;color:var(--accent-deep);}
   .mission-header h3{font-size:30px;font-style:italic;margin-bottom:6px;color:var(--ink);font-family:'Cormorant Garamond', serif;}
   
-  /* NỘI DUNG VĂN BẢN THƯỜNG - TIMES NEW ROMAN */
   a{color:inherit;text-decoration:none;}
   .wrap{max-width:1180px;margin:0 auto;padding:0 48px;position:relative;z-index:1;}
   nav{position:sticky;top:0;z-index:100;background:rgba(249,245,246,0.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
@@ -325,7 +273,6 @@
   .goal-icon svg{width:18px;height:18px;color:var(--accent-deep);stroke-width:1.5;}
   .goal-content p{font-size:13.5px;color:var(--ink-soft);line-height:1.6;font-family:'Times New Roman', Times, serif;}
 
-  /* ===== MỤC TIÊU PORTFOLIO ===== */
   .portfolio-mission {
     background: var(--paper);
     border: 1px solid var(--line);
@@ -424,7 +371,6 @@
   .assign-link svg{width:14px;height:14px;color:var(--accent-deep);transition:transform .3s ease;}
   .assign-card:hover .assign-link svg{transform:translateX(4px);}
 
-  /* ===== TỔNG KẾT ===== */
   .summary-soft {
     max-width: 1040px;
     margin: 0 auto;
@@ -768,9 +714,9 @@
     .close-signature { font-size: 17px; }
     .assign-grid{grid-template-columns:1fr;}
     .to-top{right:18px;bottom:18px;}
+    .petal { opacity: 0.2 !important; }
   }
 
-  /* Tôn trọng lựa chọn hạn chế chuyển động của người dùng */
   @media (prefers-reduced-motion: reduce){
     *, *::before, *::after{
       animation-duration:.01ms !important;
@@ -778,22 +724,16 @@
       transition-duration:.01ms !important;
     }
     html{scroll-behavior:auto;}
-    .petal{opacity:.08;}
+    .petal{opacity:.05 !important;}
   }
-  /* BẬT CÁNH HOA CHO TRANG DỰ ÁN */
-  #page-assignments .petal {
-    display: block !important;
-    background: radial-gradient(ellipse at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 240, 245, 0.7)) !important;
-    opacity: 0.3 !important;
-  }
-  #page-assignments .petal::before {
-    background: radial-gradient(ellipse at 60% 60%, rgba(255, 255, 255, 0.5), transparent) !important;
+  #page-assignments .section-alt {
+    background: #FDF0F2 !important;
   }
 </style>
 </head>
 <body>
 
-<!-- CÁNH HOA ANH ĐÀO RƠI MỜ -->
+<!-- CÁNH HOA ANH ĐÀO RƠI -->
 <div class="petals-container">
   <div class="petal"></div>
   <div class="petal"></div>
@@ -826,6 +766,7 @@
   </div>
 </nav>
 
+<!-- TRANG GIỚI THIỆU -->
 <div id="page-about" class="page-section active">
   <header class="hero">
     <div class="wrap hero-grid">
@@ -917,7 +858,6 @@
         </div>
       </div>
 
-      <!-- ===== MỤC TIÊU PORTFOLIO ===== -->
       <div class="portfolio-mission reveal">
         <div class="mission-header">
           <h3>Mục tiêu của Portfolio</h3>
@@ -942,11 +882,11 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 </div>
 
+<!-- TRANG DỰ ÁN -->
 <div id="page-assignments" class="page-section">
   <section class="section-alt" style="padding-top:80px;">
     <div class="wrap">
@@ -955,7 +895,6 @@
         <p>Tổng hợp các bài tập và dự án đã thực hiện trong học phần. Mỗi sản phẩm là một bước tiến trong hành trình phát triển kỹ năng số.</p>
       </div>
       <div class="assign-grid">
-        <!-- Bài 1 -->
         <div class="assign-card reveal">
           <div class="assign-image"><img src="bp1.jpg" alt="Bài tập 1"></div>
           <div class="assign-top"><span class="assign-num">01</span><span class="assign-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg></span></div>
@@ -964,7 +903,6 @@
           <div class="tag-row"><span class="tag">File Management</span><span class="tag">Digital Literacy</span></div>
           <a href="b1.pdf" target="_blank" class="assign-link">Xem chi tiết<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
-        <!-- Bài 2 -->
         <div class="assign-card reveal">
           <div class="assign-image"><img src="bp2.jpg" alt="Bài tập 2"></div>
           <div class="assign-top"><span class="assign-num">02</span><span class="assign-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg></span></div>
@@ -973,7 +911,6 @@
           <div class="tag-row"><span class="tag">Research Skills</span><span class="tag">Information Literacy</span></div>
           <a href="b2.pdf" target="_blank" class="assign-link">Xem chi tiết<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
-        <!-- Bài 3 -->
         <div class="assign-card reveal">
           <div class="assign-image"><img src="bp3.jpg" alt="Bài tập 3"></div>
           <div class="assign-top"><span class="assign-num">03</span><span class="assign-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="16.5" x2="12" y2="16.51"/><path d="M9.5 9.2a2.5 2.5 0 0 1 4.9.8c0 1.7-2.4 2-2.4 3.5"/></svg></span></div>
@@ -982,7 +919,6 @@
           <div class="tag-row"><span class="tag">Prompt Engineering</span><span class="tag">Applied AI</span></div>
           <a href="b3.pdf" target="_blank" class="assign-link">Xem chi tiết<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
-        <!-- Bài 4 -->
         <div class="assign-card reveal">
           <div class="assign-image"><img src="bp4.jpg" alt="Bài tập 4"></div>
           <div class="assign-top"><span class="assign-num">04</span><span class="assign-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M2.5 20c0-3.3 2.9-6 6.5-6s6.5 2.7 6.5 6"/><circle cx="18" cy="9" r="2.3"/><path d="M15.5 14.2c2.6.4 4.5 2.4 4.5 5"/></svg></span></div>
@@ -991,7 +927,6 @@
           <div class="tag-row"><span class="tag">Project Management</span><span class="tag">Digital Collaboration</span></div>
           <a href="b4.pdf" target="_blank" class="assign-link">Xem chi tiết<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
-        <!-- Bài 5 -->
         <div class="assign-card reveal">
           <div class="assign-image"><img src="bp5.jpg" alt="Bài tập 5"></div>
           <div class="assign-top"><span class="assign-num">05</span><span class="assign-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.2"/></svg></span></div>
@@ -1000,7 +935,6 @@
           <div class="tag-row"><span class="tag">Generative AI</span><span class="tag">Content Creation</span></div>
           <a href="b5.pdf" target="_blank" class="assign-link">Xem chi tiết<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
-        <!-- Bài 6 -->
         <div class="assign-card reveal">
           <div class="assign-image"><img src="bp6.jpg" alt="Bài tập 6"></div>
           <div class="assign-top"><span class="assign-num">06</span><span class="assign-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.4 3.4 8.2 8 9 4.6-.8 8-4.6 8-9V6Z"/><path d="m9.3 12 1.9 1.9 3.5-3.7"/></svg></span></div>
@@ -1014,6 +948,7 @@
   </section>
 </div>
 
+<!-- TRANG TỔNG KẾT -->
 <div id="page-summary" class="page-section">
   <section style="padding-top:80px; padding-bottom:60px;">
     <div class="wrap">
@@ -1024,7 +959,6 @@
       </div>
 
       <div class="summary-soft">
-        <!-- Cảm nhận -->
         <div class="sum-feel-soft reveal">
           <div class="sum-feel-inner">
             <div class="sum-icon-wrap">
@@ -1042,7 +976,6 @@
           <div class="sum-feel-deco"></div>
         </div>
 
-        <!-- 2 cột -->
         <div class="sum-two-col reveal">
           <div class="sum-know-soft">
             <div class="sum-icon-wrap">
@@ -1072,7 +1005,6 @@
           </div>
         </div>
 
-        <!-- Thách thức -->
         <div class="sum-hurdles-soft reveal">
           <div class="sum-hurdles-head">
             <div class="sum-icon-wrap">
@@ -1121,7 +1053,6 @@
           </div>
         </div>
 
-        <!-- Kết luận -->
         <div class="sum-close-soft reveal">
           <div class="sum-close-inner">
             <div class="sum-icon-wrap">
@@ -1180,7 +1111,6 @@
     });
   }
 
-  // Trượt viên "pill" nền về đúng vị trí của mục đang active
   function movePill(link) {
     if (!navPill || !link) return;
     navPill.style.left = link.offsetLeft + 'px';
@@ -1203,7 +1133,6 @@
     window.scrollTo({ top: 0, behavior: 'instant' });
   }
 
-  // Hiệu ứng đếm số dần lên 0 → giá trị thật cho các chỉ số ở phần giới thiệu
   function animateCount(el) {
     const target = parseInt(el.dataset.countTo, 10);
     if (Number.isNaN(target)) return;
@@ -1236,7 +1165,6 @@
     movePill(document.querySelector('.nav-links a.active'));
   });
 
-  // Nút "về đầu trang"
   const toTopBtn = document.getElementById('toTopBtn');
   if (toTopBtn) {
     window.addEventListener('scroll', () => {
