@@ -726,11 +726,49 @@
     html{scroll-behavior:auto;}
     .petal{opacity:.05 !important;}
   }
-  #page-assignments .section-alt {
-    background: #FCE4EC !important;
+  /* ===== ĐỔI MÀU NỀN CHO CÁC TRANG ===== */
+  
+  /* Trang Giới thiệu - Nền trắng, thanh hồng */
+  #page-about nav {
+    background: rgba(248, 232, 238, 0.95) !important;
+    backdrop-filter: blur(10px);
+  }
+  #page-about footer {
+    background: #F8E8EE !important;
+    border-top: 1px solid #FDCEDF;
+  }
+  
+  /* Trang Tổng kết - Nền trắng, thanh hồng */
+  #page-summary nav {
+    background: rgba(248, 232, 238, 0.95) !important;
+    backdrop-filter: blur(10px);
+  }
+  #page-summary footer {
+    background: #F8E8EE !important;
+    border-top: 1px solid #FDCEDF;
+  }
+  
+  /* Trang Dự án - Nền hồng nhạt, thanh trắng */
+  #page-assignments nav {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
   }
   #page-assignments .section-alt {
+    background: #FDF0F2 !important; /* Nền hồng nhạt cho nội dung */
+  }
+  #page-assignments footer {
     background: #ffffff !important;
+    border-top: 1px solid #FDCEDF;
+  }
+  
+  /* Giữ nguyên màu body cho các trang */
+  #page-about,
+  #page-summary {
+    background: var(--bg) !important;
+  }
+  
+  #page-assignments {
+    background: #FDF0F2 !important;
   }
 </style>
 </head>
