@@ -35,7 +35,8 @@
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{background:var(--bg);color:var(--ink);font-family:'Times New Roman', Times, serif;font-weight:400;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background-color .45s ease, color .45s ease;}
-
+  
+  /* ===== CÁNH HOA ANH ĐÀO RƠI ===== */
   .petals-container {
     position: fixed;
     top: 0;
@@ -110,6 +111,7 @@
       0 0 32px 10px rgba(255, 157, 201, 0.15);
   }
   
+  /* Vị trí và tốc độ từng cánh hoa */
   .petal:nth-child(1) { left: 3%; animation-duration: 14s; animation-delay: 0s; width: 16px; height: 22px; }
   .petal:nth-child(2) { left: 10%; animation-duration: 18s; animation-delay: 2s; width: 22px; height: 28px; }
   .petal:nth-child(3) { left: 17%; animation-duration: 12s; animation-delay: 4s; width: 14px; height: 18px; }
@@ -854,26 +856,32 @@
   body.night-mode .theme-toggle .icon-moon{ opacity: 1; transform: scale(1) rotate(0deg); }
   .nav-right{ display:flex; align-items:center; }
 
-  /* ===== Vòng sáng theo con trỏ chuột (chỉ hiện ở night mode) ===== */
-  #cursorGlow{
+  /* ===== Cánh hoa bay theo con trỏ chuột (chỉ hiện ở night mode) ===== */
+  .cursor-trail-petal{
     position: fixed;
-    top: 0; left: 0;
-    width: 360px;
-    height: 360px;
-    border-radius: 50%;
+    top: 0;
+    left: 0;
+    border-radius: 50% 0 50% 50%;
+    background: radial-gradient(ellipse at 30% 30%, #ffe4f1, #ff9dc9);
     pointer-events: none;
     z-index: 9998;
-    background: radial-gradient(circle, rgba(255,151,193,0.38) 0%, rgba(255,151,193,0.14) 38%, rgba(255,151,193,0) 70%);
-    mix-blend-mode: screen;
-    opacity: 0;
-    transition: opacity .5s ease;
+    box-shadow:
+      0 0 6px 1.5px rgba(255, 157, 201, 0.55),
+      0 0 14px 4px rgba(255, 157, 201, 0.28);
     will-change: transform, opacity;
+    animation-name: trailPetalFall;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
   }
-  @media (hover: none), (pointer: coarse){
-    #cursorGlow{ display: none; }
+  .cursor-trail-petal.alt{
+    background: radial-gradient(ellipse at 30% 30%, #ffffff, #ffd3ea);
+    box-shadow:
+      0 0 7px 1.5px rgba(255, 255, 255, 0.55),
+      0 0 15px 4px rgba(255, 157, 201, 0.30);
   }
-  @media (prefers-reduced-motion: reduce){
-    #cursorGlow{ transition: opacity .01ms; }
+  @keyframes trailPetalFall{
+    0%{ transform: translate(var(--tx), var(--ty)) rotate(0deg) scale(1); opacity: .9; }
+    100%{ transform: translate(calc(var(--tx) + var(--dx)), calc(var(--ty) + var(--fall))) rotate(var(--rot)) scale(.55); opacity: 0; }
   }
 </style>
 </head>
@@ -918,8 +926,6 @@
   </div>
 </nav>
 
-<!-- VÒNG SÁNG THEO CON TRỎ CHUỘT (chỉ hiện khi bật night mode) -->
-<div id="cursorGlow" aria-hidden="true"></div>
 
 <!-- TRANG GIỚI THIỆU -->
 <div id="page-about" class="page-section active">
@@ -1348,18 +1354,11 @@
 
   /* ===== NIGHT MODE: bật/tắt + ghi nhớ lựa chọn ===== */
   const themeToggle = document.getElementById('themeToggle');
-  const cursorGlow = document.getElementById('cursorGlow');
   const canHoverMouse = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-  function applyGlowVisibility(isNight) {
-    if (!cursorGlow || !canHoverMouse) return;
-    cursorGlow.style.opacity = isNight ? '1' : '0';
-  }
 
   function setNightMode(isNight, persist) {
     document.body.classList.toggle('night-mode', isNight);
     if (themeToggle) themeToggle.setAttribute('aria-pressed', isNight ? 'true' : 'false');
-    applyGlowVisibility(isNight);
     if (persist) {
       try { localStorage.setItem('qa-portfolio-theme', isNight ? 'night' : 'day'); } catch (e) {}
     }
@@ -1379,30 +1378,39 @@
     });
   }
 
-  /* ===== Vòng sáng theo con trỏ chuột (mượt bằng nội suy) ===== */
-  if (cursorGlow && canHoverMouse) {
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let glowX = mouseX;
-    let glowY = mouseY;
+  /* ===== Cánh hoa bay theo con trỏ chuột (chỉ khi bật night mode) ===== */
+  if (canHoverMouse && !prefersReducedMotion) {
+    let lastSpawn = 0;
+    const spawnGapMs = 55;
+
+    function spawnTrailPetal(x, y) {
+      const petal = document.createElement('div');
+      petal.className = 'cursor-trail-petal' + (Math.random() < 0.35 ? ' alt' : '');
+      const size = 9 + Math.random() * 8;
+      const drift = (Math.random() * 60 - 30).toFixed(1) + 'px';
+      const fall = (40 + Math.random() * 40).toFixed(0) + 'px';
+      const rot = (Math.random() * 200 - 100).toFixed(0) + 'deg';
+      const dur = (0.8 + Math.random() * 0.6).toFixed(2) + 's';
+      petal.style.width = size + 'px';
+      petal.style.height = (size * 1.3) + 'px';
+      petal.style.setProperty('--tx', x + 'px');
+      petal.style.setProperty('--ty', y + 'px');
+      petal.style.setProperty('--dx', drift);
+      petal.style.setProperty('--fall', fall);
+      petal.style.setProperty('--rot', rot);
+      petal.style.animationDuration = dur;
+      petal.addEventListener('animationend', () => petal.remove());
+      document.body.appendChild(petal);
+    }
 
     window.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
-
-    function trackGlow() {
-      const ease = prefersReducedMotion ? 1 : 0.16;
-      glowX += (mouseX - glowX) * ease;
-      glowY += (mouseY - glowY) * ease;
-      cursorGlow.style.transform = `translate3d(${glowX}px, ${glowY}px, 0) translate(-50%, -50%)`;
-      requestAnimationFrame(trackGlow);
-    }
-    requestAnimationFrame(trackGlow);
-
-    document.addEventListener('mouseleave', () => { cursorGlow.style.opacity = '0'; });
-    document.addEventListener('mouseenter', () => {
-      applyGlowVisibility(document.body.classList.contains('night-mode'));
+      if (!document.body.classList.contains('night-mode')) return;
+      const now = performance.now();
+      if (now - lastSpawn < spawnGapMs) return;
+      lastSpawn = now;
+      const offsetX = (Math.random() * 10 - 5);
+      const offsetY = (Math.random() * 10 - 5);
+      spawnTrailPetal(e.clientX + offsetX, e.clientY + offsetY);
     });
   }
 </script>
