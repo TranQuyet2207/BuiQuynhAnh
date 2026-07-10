@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
 <title>Bùi Quỳnh Anh — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +20,6 @@
     --paper:#FFFDFD;
   }
 
-  /* ===== NIGHT MODE — mọi thứ giữ nguyên, chỉ đổi tông màu ===== */
   body.night-mode{
     --bg:#130C11;
     --bg-alt:#1D1319;
@@ -34,9 +33,19 @@
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{background:var(--bg);color:var(--ink);font-family:'Times New Roman', Times, serif;font-weight:400;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background-color .45s ease, color .45s ease;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Times New Roman', Times, serif;
+    font-weight:400;
+    font-size:15px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    min-width:320px;
+    transition:background-color .45s ease, color .45s ease;
+  }
   
-  /* ===== CÁNH HOA ANH ĐÀO RƠI ===== */
   .petals-container {
     position: fixed;
     top: 0;
@@ -58,27 +67,20 @@
     filter: blur(0.8px);
     will-change: transform, opacity;
   }
-  
-  /* Mặc định: Cánh hoa màu hồng cho trang Giới thiệu (nền trắng) */
   .petal {
     background: radial-gradient(ellipse at 30% 30%, #fcc9d9, #f7b8cc);
     opacity: 0.5;
   }
-  
-  /* Cánh hoa màu trắng cho trang Dự án (nền hồng) */
   #page-assignments .petal {
     background: radial-gradient(ellipse at 30% 30%, rgba(255, 255, 255, 0.95), rgba(255, 230, 240, 0.85));
     opacity: 0.4;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
   }
-  
-  /* Cánh hoa màu trắng cho trang Tổng kết (nền hồng nhạt) */
   #page-summary .petal {
     background: radial-gradient(ellipse at 30% 30%, rgba(255, 255, 255, 0.9), rgba(255, 235, 240, 0.8));
     opacity: 0.35;
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
   }
-  
   .petal::before {
     content: '';
     position: absolute;
@@ -89,8 +91,6 @@
     border-radius: 50% 0 50% 50%;
     background: radial-gradient(ellipse at 60% 60%, rgba(255, 255, 255, 0.4), transparent);
   }
-
-  /* Cánh hoa phát sáng khi ở night mode */
   body.night-mode .petal{
     background: radial-gradient(ellipse at 30% 30%, #ffe4f1, #ff9dc9);
     opacity: 0.85;
@@ -110,8 +110,6 @@
       0 0 20px 7px rgba(255, 157, 201, 0.35),
       0 0 32px 10px rgba(255, 157, 201, 0.15);
   }
-  
-  /* Vị trí và tốc độ từng cánh hoa */
   .petal:nth-child(1) { left: 3%; animation-duration: 14s; animation-delay: 0s; width: 16px; height: 22px; }
   .petal:nth-child(2) { left: 10%; animation-duration: 18s; animation-delay: 2s; width: 22px; height: 28px; }
   .petal:nth-child(3) { left: 17%; animation-duration: 12s; animation-delay: 4s; width: 14px; height: 18px; }
@@ -127,10 +125,8 @@
   .petal:nth-child(13) { left: 87%; animation-duration: 23s; animation-delay: 4s; width: 19px; height: 25px; }
   .petal:nth-child(14) { left: 94%; animation-duration: 18s; animation-delay: 6s; width: 13px; height: 17px; }
   .petal:nth-child(15) { left: 50%; animation-duration: 16s; animation-delay: 7s; width: 17px; height: 23px; }
-  
   .petal:nth-child(odd) { animation-name: petalFallLeft; }
   .petal:nth-child(even) { animation-name: petalFallRight; }
-  
   @keyframes petalFallLeft {
     0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0.5; }
     20% { transform: translateY(20vh) rotate(40deg) translateX(-30px); opacity: 0.6; }
@@ -139,7 +135,6 @@
     80% { transform: translateY(80vh) rotate(160deg) translateX(-20px); opacity: 0.3; }
     100% { transform: translateY(110vh) rotate(200deg) translateX(-25px); opacity: 0; }
   }
-  
   @keyframes petalFallRight {
     0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0.5; }
     20% { transform: translateY(20vh) rotate(-40deg) translateX(30px); opacity: 0.6; }
@@ -149,7 +144,6 @@
     100% { transform: translateY(110vh) rotate(-200deg) translateX(25px); opacity: 0; }
   }
 
-  /* ===== PHẦN CÒN LẠI GIỮ NGUYÊN ===== */
   h1,h2,h3{font-family:'Cormorant Garamond', serif;font-weight:600;color:var(--ink);}
   .nav-logo{font-family:'Cormorant Garamond', serif;font-weight:600;font-size:22px;letter-spacing:0.5px;}
   .stat b{display:block;font-family:'Cormorant Garamond', serif;font-size:32px;font-weight:600;color:var(--ink);}
@@ -164,8 +158,8 @@
   .sum-hurdles-head h3{font-size:22px;font-style:italic;color:var(--ink);font-family:'Cormorant Garamond', serif;}
   .sum-close-soft h3{font-size:24px;font-style:italic;margin-bottom:12px;color:var(--ink);font-family:'Cormorant Garamond', serif;}
   .close-signature{font-family:'Cormorant Garamond', serif;font-size:20px;font-style:italic;color:var(--accent-deep);letter-spacing:1px;}
-  .section-head h2{font-size:44px;font-style:italic;margin-bottom:14px;font-family:'Cormorant Garamond', serif;}
-  .hero h1{font-size:64px;line-height:1.08;font-style:italic;margin-bottom:26px;letter-spacing:0.3px;font-family:'Cormorant Garamond', serif;}
+  .section-head h2{font-size:clamp(2rem, 5vw, 2.8rem);font-style:italic;margin-bottom:14px;font-family:'Cormorant Garamond', serif;}
+  .hero h1{font-size:clamp(2.8rem, 7vw, 4rem);line-height:1.08;font-style:italic;margin-bottom:26px;letter-spacing:0.3px;font-family:'Cormorant Garamond', serif;}
   .eyebrow{font-size:12.5px;letter-spacing:3px;text-transform:uppercase;color:var(--accent-deep);font-weight:500;margin-bottom:18px;display:flex;align-items:center;gap:12px;font-family:'Times New Roman', Times, serif;}
   .eyebrow::before{content:'';width:26px;height:1px;background:var(--accent-deep);flex-shrink:0;}
   .about-quote span{font-family:'Jost', sans-serif;font-style:normal;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-soft);z-index:1;}
@@ -179,7 +173,6 @@
   .nav-links{display:flex;gap:8px;list-style:none;font-size:14px;letter-spacing:0.5px;}
   #greetword{font-style:italic;font-family:'Cormorant Garamond', serif;color:var(--accent-deep);}
   .mission-header h3{font-size:30px;font-style:italic;margin-bottom:6px;color:var(--ink);font-family:'Cormorant Garamond', serif;}
-  
   a{color:inherit;text-decoration:none;}
   .wrap{max-width:1180px;margin:0 auto;padding:0 48px;position:relative;z-index:1;}
   nav{position:sticky;top:0;z-index:100;background:rgba(249,245,246,0.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
@@ -281,14 +274,11 @@
     line-height:1;
   }
   .subsection-title{text-align:center;font-style:italic;font-size:28px;margin-bottom:36px;font-family:'Cormorant Garamond', serif;}
-  .goal-row{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-bottom:64px;}
-  .goal-row::before{
-    content:'';
-    position:absolute;
-    top:40px; left:calc(12.5% - 4px); right:calc(12.5% - 4px);
-    height:1px;
-    background:repeating-linear-gradient(90deg, var(--line) 0 8px, transparent 8px 16px);
-    z-index:0;
+  .goal-row{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:22px;
+    margin-bottom:64px;
   }
   .goal-item{
     position:relative;
@@ -387,11 +377,26 @@
     }
   }
 
-  .assign-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-  .assign-card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:28px 24px 24px;display:flex;flex-direction:column;transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;}
-  .assign-card:hover{transform:translateY(-6px);border-color:var(--accent-deep);box-shadow:0 24px 40px -20px rgba(184,92,125,0.25);}
-  .assign-image{width:100%;aspect-ratio:1/1;border-radius:16px;overflow:hidden;margin-bottom:16px;background:var(--bg-alt);display:flex;align-items:center;justify-content:center;}
-  .assign-image img{width:100%;height:100%;object-fit:cover;display:block;}
+  .assign-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    gap:24px;
+  }
+  .assign-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:28px 24px 24px;
+    display:flex;
+    flex-direction:column;
+    transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+    cursor:pointer;
+  }
+  .assign-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--accent-deep);
+    box-shadow:0 24px 40px -20px rgba(184,92,125,0.25);
+  }
   .assign-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;}
   .assign-icon{width:38px;height:38px;border-radius:50%;background:var(--bg-alt);display:flex;align-items:center;justify-content:center;}
   .assign-icon svg{width:17px;height:17px;color:var(--accent-deep);stroke-width:1.5;}
@@ -403,7 +408,20 @@
   }
   .tag-row{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap;}
   .tag{font-size:11.5px;letter-spacing:0.3px;padding:5px 13px;border-radius:100px;background:var(--bg-alt);color:var(--accent-deep);font-family:'Times New Roman', Times, serif;}
-  .assign-link{display:flex;align-items:center;justify-content:space-between;font-size:13.5px;letter-spacing:0.3px;padding-top:16px;border-top:1px solid var(--line);color:var(--ink);font-weight:500;cursor:pointer;font-family:'Times New Roman', Times, serif;}
+  .assign-link{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-size:13.5px;
+    letter-spacing:0.3px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+    color:var(--ink);
+    font-weight:500;
+    cursor:pointer;
+    font-family:'Times New Roman', Times, serif;
+    pointer-events:none;
+  }
   .assign-link svg{width:14px;height:14px;color:var(--accent-deep);transition:transform .3s ease;}
   .assign-card:hover .assign-link svg{transform:translateX(4px);}
 
@@ -593,7 +611,7 @@
   }
   .challenges-soft {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 22px;
   }
   .challenge-soft {
@@ -699,6 +717,165 @@
 
   footer{text-align:center;padding:36px 0 24px;font-size:12.5px;color:var(--ink-faint);letter-spacing:0.3px;font-family:'Times New Roman', Times, serif;}
 
+  /* ===== MODAL: GIỮ ZOOM-IN, BỎ ZOOM-OUT ===== */
+  .project-modal-backdrop{
+    position:fixed; inset:0;
+    background:rgba(62,36,48,0.5);
+    backdrop-filter:blur(9px) saturate(115%);
+    -webkit-backdrop-filter:blur(9px) saturate(115%);
+    z-index:300;
+    opacity:0; pointer-events:none;
+    transition:opacity .45s ease;
+  }
+  .project-modal-backdrop.show{opacity:1; pointer-events:auto;}
+  body.night-mode .project-modal-backdrop{background:rgba(5,3,4,0.72);}
+
+  .project-modal{
+    display:none;
+    position:fixed;
+    z-index:301;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:26px;
+    box-shadow:0 50px 110px -30px rgba(184,92,125,0.5);
+    overflow:hidden;
+    transition: none; /* mặc định không transition, sẽ set trong JS */
+  }
+  .project-modal.is-visible{display:flex;}
+
+  .project-modal-close{
+    position:absolute;
+    top:16px; right:16px;
+    width:38px; height:38px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    background:var(--paper);
+    color:var(--ink-soft);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    z-index:6;
+    opacity:0;
+    transform:scale(.8);
+    transition:opacity .3s ease .1s, transform .3s ease .1s, background .3s ease, color .3s ease, border-color .3s ease;
+  }
+  .project-modal.is-open .project-modal-close{opacity:1; transform:scale(1);}
+  .project-modal-close:hover{background:var(--accent-deep);color:var(--paper);border-color:var(--accent-deep);transform:scale(1.06);}
+  .project-modal-close svg{width:16px;height:16px;}
+
+  .project-modal-inner{
+    display:flex;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+  }
+
+  .project-modal-info{
+    flex:0 0 340px;
+    max-width:340px;
+    height:100%;
+    overflow-y:auto;
+    border-right:1px solid var(--line);
+    background:var(--bg);
+    display:flex;
+    flex-direction:column;
+    scrollbar-width:thin;
+    scrollbar-color:var(--line) transparent;
+  }
+  .project-modal-image{
+    width:100%;
+    aspect-ratio:16/10;
+    flex-shrink:0;
+    background-size:cover;
+    background-position:center;
+    background-color:var(--bg-alt);
+    opacity:0;
+    transform:scale(1.05);
+    transition:opacity .5s ease .16s, transform .65s ease .16s;
+  }
+  .project-modal.is-open .project-modal-image{opacity:1; transform:scale(1);}
+  .project-modal-body{
+    padding:22px 26px 26px;
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    opacity:0;
+    transform:translateY(12px);
+    transition:opacity .45s ease .22s, transform .45s ease .22s;
+  }
+  .project-modal.is-open .project-modal-body{opacity:1; transform:translateY(0);}
+  .project-modal-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+  .project-modal-num{font-family:'Cormorant Garamond', serif;font-size:32px;font-style:italic;font-weight:600;color:var(--line);line-height:1;}
+  .project-modal-icon{width:38px;height:38px;border-radius:50%;background:var(--bg-alt);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .project-modal-icon svg{width:17px;height:17px;color:var(--accent-deep);stroke-width:1.5;}
+  #modalTitle{font-family:'Cormorant Garamond', serif;font-size:21px;font-style:italic;font-weight:bold;color:var(--ink);line-height:1.35;margin-bottom:10px;}
+  #modalDesc{font-size:13.5px;line-height:1.75;color:var(--ink-soft);margin-bottom:16px;font-family:'Times New Roman', Times, serif;}
+  #modalTags{margin-bottom:0;}
+
+  .project-modal-pdf{
+    flex:1 1 auto;
+    min-width:0;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    background:var(--bg-alt);
+    opacity:0;
+    transition:opacity .5s ease .3s;
+  }
+  .project-modal.is-open .project-modal-pdf{opacity:1;}
+  .project-modal.is-closing .project-modal-image,
+  .project-modal.is-closing .project-modal-body,
+  .project-modal.is-closing .project-modal-pdf,
+  .project-modal.is-closing .project-modal-close{
+    transition: opacity .2s ease, transform .2s ease !important;
+    opacity: 0 !important;
+  }
+  .project-modal-pdf-bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:14px 22px;
+    border-bottom:1px solid var(--line);
+    background:var(--paper);
+    flex-shrink:0;
+  }
+  .pdf-file-name{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-soft);letter-spacing:0.2px;min-width:0;}
+  .pdf-file-name svg{width:15px;height:15px;color:var(--accent-deep);flex-shrink:0;}
+  .pdf-file-name span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .pdf-open-tab{
+    display:flex;align-items:center;gap:6px;
+    font-size:12.5px;letter-spacing:0.2px;
+    color:var(--ink);font-weight:500;
+    padding:8px 16px;
+    border-radius:100px;
+    border:1px solid var(--line);
+    background:var(--paper);
+    flex-shrink:0;
+    transition:background .3s ease, color .3s ease, border-color .3s ease, transform .3s ease;
+  }
+  .pdf-open-tab svg{width:13px;height:13px;color:var(--accent-deep);transition:color .3s ease;}
+  .pdf-open-tab:hover{background:var(--accent-deep);color:var(--paper);border-color:var(--accent-deep);transform:translateY(-1px);}
+  .pdf-open-tab:hover svg{color:var(--paper);}
+
+  .project-modal-pdf-viewport{position:relative;flex:1;overflow:hidden;background:var(--bg);}
+  .project-modal-pdf-frame{position:absolute;inset:0;width:100%;height:100%;border:0;opacity:0;transition:opacity .4s ease;}
+  .project-modal-pdf-frame.loaded{opacity:1;}
+  .pdf-loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:10px;transition:opacity .3s ease;}
+  .pdf-loader.hide{opacity:0;pointer-events:none;}
+  .pdf-loader-petal{
+    width:14px;height:18px;
+    border-radius:50% 0 50% 50%;
+    background:radial-gradient(ellipse at 30% 30%, var(--accent), var(--accent-deep));
+    animation:pdfLoaderBounce 1.1s ease-in-out infinite;
+    box-shadow:0 4px 12px -4px rgba(184,92,125,0.5);
+  }
+  .pdf-loader-petal:nth-child(2){animation-delay:.15s;}
+  .pdf-loader-petal:nth-child(3){animation-delay:.3s;}
+  @keyframes pdfLoaderBounce{
+    0%,80%,100%{transform:translateY(0) scale(.65);opacity:.45;}
+    40%{transform:translateY(-8px) scale(1);opacity:1;}
+  }
+
   .to-top{
     position:fixed;
     right:28px; bottom:28px;
@@ -722,14 +899,13 @@
   @media (max-width:900px){
     .wrap, .nav-inner{padding-left:26px;padding-right:26px;}
     .hero-grid{grid-template-columns:1fr;gap:56px;}
-    .hero h1{font-size:46px;}
+    .hero h1{font-size:clamp(2.4rem, 8vw, 3.2rem);}
     .portrait-wrap{order:-1;}
     .portrait-ring{width:220px;height:220px;}
     .assign-grid, .summary-soft .sum-two-col{grid-template-columns:1fr;}
     .about-intro{grid-template-columns:1fr;gap:28px;}
     .about-quote{padding:32px 26px;}
     .goal-row{grid-template-columns:1fr;gap:16px;}
-    .goal-row::before{display:none;}
     .nav-links{gap:20px;font-size:13px;}
     section{padding:60px 0;}
     .stats{gap:32px;}
@@ -755,6 +931,12 @@
     .petal { opacity: 0.2 !important; }
     .theme-toggle{width:34px;height:34px;margin-left:8px;}
     .theme-toggle svg{width:15px;height:15px;}
+    .project-modal-inner{flex-direction:column;}
+    .project-modal-info{flex:0 0 auto;max-width:none;width:100%;max-height:40vh;border-right:none;border-bottom:1px solid var(--line);}
+    .project-modal-image{aspect-ratio:16/9;}
+    .project-modal-body{padding:18px 20px 20px;}
+    .project-modal-pdf-bar{padding:12px 16px;}
+    .pdf-open-tab span{display:none;}
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -766,9 +948,6 @@
     html{scroll-behavior:auto;}
     .petal{opacity:.05 !important;}
   }
-  /* ===== ĐỔI MÀU NỀN CHO CÁC TRANG ===== */
-  
-  /* Trang Giới thiệu - Nền trắng, thanh hồng */
   #page-about nav {
     background: rgba(248, 232, 238, 0.95) !important;
     backdrop-filter: blur(10px);
@@ -777,8 +956,6 @@
     background: #F8E8EE !important;
     border-top: 1px solid #FDCEDF;
   }
-  
-  /* Trang Tổng kết - Nền trắng, thanh hồng */
   #page-summary nav {
     background: rgba(248, 232, 238, 0.95) !important;
     backdrop-filter: blur(10px);
@@ -787,31 +964,25 @@
     background: #F8E8EE !important;
     border-top: 1px solid #FDCEDF;
   }
-  
-  /* Trang Dự án - Nền hồng nhạt, thanh trắng */
   #page-assignments nav {
     background: rgba(255, 255, 255, 0.95) !important;
     backdrop-filter: blur(10px);
   }
   #page-assignments .section-alt {
-    background: #FDF0F2 !important; /* Nền hồng nhạt cho nội dung */
+    background: #FDF0F2 !important;
   }
   #page-assignments footer {
     background: #ffffff !important;
     border-top: 1px solid #FDCEDF;
   }
-  
-  /* Giữ nguyên màu body cho các trang */
   #page-about,
   #page-summary {
     background: var(--bg) !important;
   }
-  
   #page-assignments {
     background: #FDF0F2 !important;
   }
 
-  /* ===== NIGHT MODE — override các màu nền viết cứng ===== */
   body.night-mode nav{
     background: rgba(19, 12, 17, 0.86) !important;
   }
@@ -822,7 +993,6 @@
     background: #170E15 !important;
   }
 
-  /* ===== Nút chuyển chế độ sáng/tối ===== */
   .theme-toggle{
     position: relative;
     width: 40px;
@@ -856,7 +1026,6 @@
   body.night-mode .theme-toggle .icon-moon{ opacity: 1; transform: scale(1) rotate(0deg); }
   .nav-right{ display:flex; align-items:center; }
 
-  /* ===== Cánh hoa bay theo con trỏ chuột (chỉ hiện ở night mode) ===== */
   .cursor-trail-petal{
     position: fixed;
     top: 0;
@@ -865,23 +1034,17 @@
     background: radial-gradient(ellipse at 30% 30%, #ffe4f1, #ff9dc9);
     pointer-events: none;
     z-index: 9998;
+    opacity: 0;
     box-shadow:
       0 0 6px 1.5px rgba(255, 157, 201, 0.55),
       0 0 14px 4px rgba(255, 157, 201, 0.28);
     will-change: transform, opacity;
-    animation-name: trailPetalFall;
-    animation-timing-function: ease-out;
-    animation-fill-mode: forwards;
   }
   .cursor-trail-petal.alt{
     background: radial-gradient(ellipse at 30% 30%, #ffffff, #ffd3ea);
     box-shadow:
       0 0 7px 1.5px rgba(255, 255, 255, 0.55),
       0 0 15px 4px rgba(255, 157, 201, 0.30);
-  }
-  @keyframes trailPetalFall{
-    0%{ transform: translate(var(--tx), var(--ty)) rotate(0deg) scale(1); opacity: .9; }
-    100%{ transform: translate(calc(var(--tx) + var(--dx)), calc(var(--ty) + var(--fall))) rotate(var(--rot)) scale(.55); opacity: 0; }
   }
 </style>
 </head>
@@ -1056,53 +1219,47 @@
         <p>Tổng hợp các bài tập và dự án đã thực hiện trong học phần. Mỗi sản phẩm là một bước tiến trong hành trình phát triển kỹ năng số.</p>
       </div>
       <div class="assign-grid">
-        <div class="assign-card reveal">
-          <div class="assign-image"><img src="bp1.jpg" alt="Bài tập 1"></div>
+        <div class="assign-card reveal" data-image="bp1.jpg" data-pdf="b1.pdf" data-num="01" data-title="BÀI 1: MÁY TÍNH VÀ CÁC THIẾT BỊ NGOẠI VI" data-desc="Sản phẩm chuẩn hóa kỹ năng thao tác trên File Explorer, tổ chức cấu trúc dữ liệu logic và quy tắc đặt tên khoa học. Minh họa năng lực công nghệ nâng cao kèm minh chứng trung quan." data-tags='["File Management","Digital Literacy"]'>
           <div class="assign-top"><span class="assign-num">01</span><span class="assign-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="1.5"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg></span></div>
           <h3>BÀI 1: MÁY TÍNH VÀ CÁC THIẾT BỊ NGOẠI VI</h3>
           <p>Sản phẩm chuẩn hóa kỹ năng thao tác trên File Explorer, tổ chức cấu trúc dữ liệu logic và quy tắc đặt tên khoa học. Minh họa năng lực công nghệ nâng cao kèm minh chứng trung quan.</p>
           <div class="tag-row"><span class="tag">File Management</span><span class="tag">Digital Literacy</span></div>
-          <a href="b1.pdf" target="_blank" class="assign-link">Xem chi tiết<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <div class="assign-link">Xem chi tiết<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
         </div>
-        <div class="assign-card reveal">
-          <div class="assign-image"><img src="bp2.jpg" alt="Bài tập 2"></div>
+        <div class="assign-card reveal" data-image="bp2.jpg" data-pdf="b2.pdf" data-num="02" data-title="BÀI 2: KHAI THÁC DỮ LIỆU VÀ THÔNG TIN" data-desc="Quy trình tra cứu thông tin hệ thống sử dụng các toán tử nâng cao và xây dựng bảng thẩm định chéo độ tin cậy của các nguồn tài liệu học thuật." data-tags='["Research Skills","Information Literacy"]'>
           <div class="assign-top"><span class="assign-num">02</span><span class="assign-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg></span></div>
           <h3>BÀI 2: KHAI THÁC DỮ LIỆU VÀ THÔNG TIN</h3>
           <p>Quy trình tra cứu thông tin hệ thống sử dụng các toán tử nâng cao và xây dựng bảng thẩm định chéo độ tin cậy của các nguồn tài liệu học thuật.</p>
           <div class="tag-row"><span class="tag">Research Skills</span><span class="tag">Information Literacy</span></div>
-          <a href="b2.pdf" target="_blank" class="assign-link">Xem chi tiết<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <div class="assign-link">Xem chi tiết<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
         </div>
-        <div class="assign-card reveal">
-          <div class="assign-image"><img src="bp3.jpg" alt="Bài tập 3"></div>
+        <div class="assign-card reveal" data-image="bp3.jpg" data-pdf="b3.pdf" data-num="03" data-title="BÀI 3: TỔNG QUAN VỀ TRÍ TUỆ NHÂN TẠO" data-desc="Nghiên cứu thực nghiệm đối chiếu hiệu năng giữa prompt ban đầu và prompt cải tiến. Phân tích chi tiết kết quả đầu ra từ AI để phục vụ học tập chủ động." data-tags='["Prompt Engineering","Applied AI"]'>
           <div class="assign-top"><span class="assign-num">03</span><span class="assign-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="16.5" x2="12" y2="16.51"/><path d="M9.5 9.2a2.5 2.5 0 0 1 4.9.8c0 1.7-2.4 2-2.4 3.5"/></svg></span></div>
           <h3>BÀI 3: TỔNG QUAN VỀ TRÍ TUỆ NHÂN TẠO</h3>
           <p>Nghiên cứu thực nghiệm đối chiếu hiệu năng giữa prompt ban đầu và prompt cải tiến. Phân tích chi tiết kết quả đầu ra từ AI để phục vụ học tập chủ động.</p>
           <div class="tag-row"><span class="tag">Prompt Engineering</span><span class="tag">Applied AI</span></div>
-          <a href="b3.pdf" target="_blank" class="assign-link">Xem chi tiết<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <div class="assign-link">Xem chi tiết<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
         </div>
-        <div class="assign-card reveal">
-          <div class="assign-image"><img src="bp4.jpg" alt="Bài tập 4"></div>
+        <div class="assign-card reveal" data-image="bp4.jpg" data-pdf="b4.pdf" data-num="04" data-title="BÀI 4: GIAO TIẾP VÀ HỢP TÁC TRONG MÔI TRƯỜNG SỐ" data-desc="Trình bày minh chứng thực chiến về việc sử dụng các công cụ quản lý dự án nhóm và phương pháp phối hợp, giao tiếp trực tuyến để tối ưu hóa hiệu suất làm việc chung." data-tags='["Project Management","Digital Collaboration"]'>
           <div class="assign-top"><span class="assign-num">04</span><span class="assign-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M2.5 20c0-3.3 2.9-6 6.5-6s6.5 2.7 6.5 6"/><circle cx="18" cy="9" r="2.3"/><path d="M15.5 14.2c2.6.4 4.5 2.4 4.5 5"/></svg></span></div>
           <h3>BÀI 4: GIAO TIẾP VÀ HỢP TÁC TRONG MÔI TRƯỜNG SỐ</h3>
           <p>Trình bày minh chứng thực chiến về việc sử dụng các công cụ quản lý dự án nhóm và phương pháp phối hợp, giao tiếp trực tuyến để tối ưu hóa hiệu suất làm việc chung.</p>
           <div class="tag-row"><span class="tag">Project Management</span><span class="tag">Digital Collaboration</span></div>
-          <a href="b4.pdf" target="_blank" class="assign-link">Xem chi tiết<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <div class="assign-link">Xem chi tiết<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
         </div>
-        <div class="assign-card reveal">
-          <div class="assign-image"><img src="bp5.jpg" alt="Bài tập 5"></div>
+        <div class="assign-card reveal" data-image="bp5.jpg" data-pdf="b5.pdf" data-num="05" data-title="BÀI 5: SÁNG TẠO NỘI DUNG SỐ" data-desc="Trưng bày sản phẩm truyền thông hoàn thiện (hình ảnh/bài viết) được hỗ trợ bởi các công cụ AI tạo sinh, thể hiện sự kết hợp giữa hiệu suất công nghệ và tư duy thẩm mỹ." data-tags='["Generative AI","Content Creation"]'>
           <div class="assign-top"><span class="assign-num">05</span><span class="assign-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3.2"/></svg></span></div>
           <h3>BÀI 5: SÁNG TẠO NỘI DUNG SỐ</h3>
           <p>Trưng bày sản phẩm truyền thông hoàn thiện (hình ảnh/bài viết) được hỗ trợ bởi các công cụ AI tạo sinh, thể hiện sự kết hợp giữa hiệu suất công nghệ và tư duy thẩm mỹ.</p>
           <div class="tag-row"><span class="tag">Generative AI</span><span class="tag">Content Creation</span></div>
-          <a href="b5.pdf" target="_blank" class="assign-link">Xem chi tiết<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <div class="assign-link">Xem chi tiết<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
         </div>
-        <div class="assign-card reveal">
-          <div class="assign-image"><img src="bp6.jpg" alt="Bài tập 6"></div>
+        <div class="assign-card reveal" data-image="bp6.jpg" data-pdf="b6.pdf" data-num="06" data-title="BÀI 6: AN TOÀN VÀ LIÊM CHÍNH HỌC THUẬT TRONG MÔI TRƯỜNG SỐ" data-desc="Xây dựng và đề xuất bộ nguyên tắc cốt lõi về việc sử dụng AI có trách nhiệm trong môi trường đại học dựa trên các kết quả nghiên cứu và phân tích chính sách thực tế." data-tags='["AI Ethics","Academic Integrity"]'>
           <div class="assign-top"><span class="assign-num">06</span><span class="assign-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.4 3.4 8.2 8 9 4.6-.8 8-4.6 8-9V6Z"/><path d="m9.3 12 1.9 1.9 3.5-3.7"/></svg></span></div>
           <h3>BÀI 6: AN TOÀN VÀ LIÊM CHÍNH HỌC THUẬT TRONG MÔI TRƯỜNG SỐ</h3>
           <p>Xây dựng và đề xuất bộ nguyên tắc cốt lõi về việc sử dụng AI có trách nhiệm trong môi trường đại học dựa trên các kết quả nghiên cứu và phân tích chính sách thực tế.</p>
           <div class="tag-row"><span class="tag">AI Ethics</span><span class="tag">Academic Integrity</span></div>
-          <a href="b6.pdf" target="_blank" class="assign-link">Xem chi tiết<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <div class="assign-link">Xem chi tiết<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
         </div>
       </div>
     </div>
@@ -1240,6 +1397,48 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
 </button>
 
+<!-- MODAL XEM CHI TIẾT DỰ ÁN -->
+<div class="project-modal-backdrop" id="projectBackdrop"></div>
+<div class="project-modal" id="projectModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modalTitle">
+  <button type="button" class="project-modal-close" id="projectModalClose" aria-label="Đóng">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+  </button>
+  <div class="project-modal-inner">
+    <div class="project-modal-info">
+      <div class="project-modal-image" id="modalImage"></div>
+      <div class="project-modal-body">
+        <div class="project-modal-top">
+          <span class="project-modal-num" id="modalNum">01</span>
+          <span class="project-modal-icon" id="modalIcon"></span>
+        </div>
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc"></p>
+        <div class="tag-row" id="modalTags"></div>
+      </div>
+    </div>
+    <div class="project-modal-pdf">
+      <div class="project-modal-pdf-bar">
+        <span class="pdf-file-name" id="modalFileName">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span id="modalFileNameText">b1.pdf</span>
+        </span>
+        <a href="#" target="_blank" rel="noopener" id="modalOpenTab" class="pdf-open-tab">
+          <span>Mở tab mới</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+      <div class="project-modal-pdf-viewport">
+        <div class="pdf-loader" id="pdfLoader">
+          <span class="pdf-loader-petal"></span>
+          <span class="pdf-loader-petal"></span>
+          <span class="pdf-loader-petal"></span>
+        </div>
+        <iframe id="modalPdfFrame" class="project-modal-pdf-frame" src="about:blank" title="Xem trước PDF"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -1352,7 +1551,7 @@
   }
   window.switchPage = switchPage;
 
-  /* ===== NIGHT MODE: bật/tắt + ghi nhớ lựa chọn ===== */
+  /* ===== NIGHT MODE ===== */
   const themeToggle = document.getElementById('themeToggle');
   const canHoverMouse = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
@@ -1378,29 +1577,56 @@
     });
   }
 
-  /* ===== Cánh hoa bay theo con trỏ chuột (chỉ khi bật night mode) ===== */
+  /* ===== Cánh hoa theo chuột (night mode) ===== */
   if (canHoverMouse && !prefersReducedMotion) {
+    const POOL_SIZE = 22;
+    const spawnGapMs = 58;
     let lastSpawn = 0;
-    const spawnGapMs = 55;
+    const pool = [];
+
+    for (let i = 0; i < POOL_SIZE; i++) {
+      const el = document.createElement('div');
+      el.className = 'cursor-trail-petal';
+      document.body.appendChild(el);
+      pool.push({ el, busy: false });
+    }
+
+    function getFreeSlot() {
+      for (let i = 0; i < pool.length; i++) {
+        if (!pool[i].busy) return pool[i];
+      }
+      return null;
+    }
 
     function spawnTrailPetal(x, y) {
-      const petal = document.createElement('div');
-      petal.className = 'cursor-trail-petal' + (Math.random() < 0.35 ? ' alt' : '');
+      const slot = getFreeSlot();
+      if (!slot) return;
+      slot.busy = true;
+
+      const el = slot.el;
       const size = 9 + Math.random() * 8;
-      const drift = (Math.random() * 60 - 30).toFixed(1) + 'px';
-      const fall = (40 + Math.random() * 40).toFixed(0) + 'px';
-      const rot = (Math.random() * 200 - 100).toFixed(0) + 'deg';
-      const dur = (0.8 + Math.random() * 0.6).toFixed(2) + 's';
-      petal.style.width = size + 'px';
-      petal.style.height = (size * 1.3) + 'px';
-      petal.style.setProperty('--tx', x + 'px');
-      petal.style.setProperty('--ty', y + 'px');
-      petal.style.setProperty('--dx', drift);
-      petal.style.setProperty('--fall', fall);
-      petal.style.setProperty('--rot', rot);
-      petal.style.animationDuration = dur;
-      petal.addEventListener('animationend', () => petal.remove());
-      document.body.appendChild(petal);
+      const dx = Math.random() * 60 - 30;
+      const fall = 40 + Math.random() * 40;
+      const rot = Math.random() * 200 - 100;
+      const dur = 800 + Math.random() * 600;
+
+      el.className = 'cursor-trail-petal' + (Math.random() < 0.35 ? ' alt' : '');
+      el.style.width = size + 'px';
+      el.style.height = (size * 1.3) + 'px';
+      el.style.opacity = '';
+
+      const anim = el.animate(
+        [
+          { transform: `translate(${x}px, ${y}px) rotate(0deg) scale(1)`, opacity: 0.9 },
+          { transform: `translate(${x + dx}px, ${y + fall}px) rotate(${rot}deg) scale(.55)`, opacity: 0 }
+        ],
+        { duration: dur, easing: 'cubic-bezier(.16,.84,.44,1)', fill: 'forwards' }
+      );
+
+      anim.onfinish = () => {
+        slot.busy = false;
+        el.style.opacity = '0';
+      };
     }
 
     window.addEventListener('mousemove', (e) => {
@@ -1408,11 +1634,223 @@
       const now = performance.now();
       if (now - lastSpawn < spawnGapMs) return;
       lastSpawn = now;
-      const offsetX = (Math.random() * 10 - 5);
-      const offsetY = (Math.random() * 10 - 5);
+      const offsetX = Math.random() * 10 - 5;
+      const offsetY = Math.random() * 10 - 5;
       spawnTrailPetal(e.clientX + offsetX, e.clientY + offsetY);
     });
   }
+
+  /* ===== MODAL: GIỮ ZOOM-IN, BỎ ZOOM-OUT ===== */
+  (function () {
+    const backdrop = document.getElementById('projectBackdrop');
+    const modal = document.getElementById('projectModal');
+    const closeBtn = document.getElementById('projectModalClose');
+    const modalImage = document.getElementById('modalImage');
+    const modalNum = document.getElementById('modalNum');
+    const modalIcon = document.getElementById('modalIcon');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalTags = document.getElementById('modalTags');
+    const modalFileNameText = document.getElementById('modalFileNameText');
+    const modalOpenTab = document.getElementById('modalOpenTab');
+    const pdfFrame = document.getElementById('modalPdfFrame');
+    const pdfLoader = document.getElementById('pdfLoader');
+
+    if (!modal || !backdrop) return;
+
+    let originCard = null;
+    let isAnimating = false;
+    let lockedScrollY = 0;
+    let scrollbarWidth = 0;
+
+    function getScrollbarWidth() {
+      return window.innerWidth - document.documentElement.clientWidth;
+    }
+
+    function lockScroll() {
+      lockedScrollY = window.pageYOffset || window.scrollY;
+      scrollbarWidth = getScrollbarWidth();
+      document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = scrollbarWidth + 'px';
+    }
+
+    function unlockScroll() {
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          window.scrollTo({ top: lockedScrollY, behavior: 'instant' });
+        });
+      });
+    }
+
+    function getTargetRect() {
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      if (vw <= 760) {
+        const width = vw * 0.94;
+        const height = vh * 0.9;
+        return { width: width, height: height, top: (vh - height) / 2, left: (vw - width) / 2 };
+      }
+      const width = Math.min(1120, vw * 0.9);
+      const height = Math.min(720, vh * 0.86);
+      return { width: width, height: height, top: (vh - height) / 2, left: (vw - width) / 2 };
+    }
+
+    function setModalRect(rect, radius) {
+      modal.style.top = rect.top + 'px';
+      modal.style.left = rect.left + 'px';
+      modal.style.width = rect.width + 'px';
+      modal.style.height = rect.height + 'px';
+      if (radius !== undefined) modal.style.borderRadius = radius;
+    }
+
+    function fillModalContent(card) {
+      const image = card.dataset.image || '';
+      const num = card.dataset.num || '01';
+      const title = card.dataset.title || '';
+      const desc = card.dataset.desc || '';
+      const pdf = card.dataset.pdf || '#';
+      const tags = JSON.parse(card.dataset.tags || '[]');
+
+      const iconEl = card.querySelector('.assign-icon svg');
+      
+      modalNum.textContent = num;
+      modalTitle.textContent = title;
+      modalDesc.textContent = desc;
+      modalImage.style.backgroundImage = image ? `url("${image}")` : 'none';
+      modalIcon.innerHTML = iconEl ? iconEl.outerHTML : '';
+      modalFileNameText.textContent = pdf;
+      modalOpenTab.setAttribute('href', pdf);
+
+      modalTags.innerHTML = '';
+      tags.forEach(tagText => {
+        const span = document.createElement('span');
+        span.className = 'tag';
+        span.textContent = tagText;
+        modalTags.appendChild(span);
+      });
+
+      pdfFrame.classList.remove('loaded');
+      pdfLoader.classList.remove('hide');
+      pdfFrame.src = pdf;
+    }
+
+    function openModal(card) {
+      if (isAnimating || modal.classList.contains('is-visible')) return;
+      isAnimating = true;
+      originCard = card;
+
+      const startRect = card.getBoundingClientRect();
+      fillModalContent(card);
+      lockScroll();
+
+      modal.classList.remove('is-closing');
+      modal.style.transition = 'none';
+      // Đặt modal ở vị trí của thẻ với kích thước nhỏ
+      setModalRect(
+        { top: startRect.top, left: startRect.left, width: startRect.width, height: startRect.height },
+        '20px'
+      );
+      modal.style.opacity = '0';
+      modal.style.transform = 'scale(0.92)';
+      modal.classList.add('is-visible');
+      backdrop.classList.add('show');
+      modal.setAttribute('aria-hidden', 'false');
+
+      void modal.offsetHeight;
+
+      // Bắt đầu animation zoom-in
+      const dur = prefersReducedMotion ? 0.01 : 0.62;
+      modal.style.transition =
+        'top ' + dur + 's cubic-bezier(.16,.84,.44,1), ' +
+        'left ' + dur + 's cubic-bezier(.16,.84,.44,1), ' +
+        'width ' + dur + 's cubic-bezier(.16,.84,.44,1), ' +
+        'height ' + dur + 's cubic-bezier(.16,.84,.44,1), ' +
+        'border-radius ' + dur + 's ease, ' +
+        'opacity ' + dur + 's ease, ' +
+        'transform ' + dur + 's ease';
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const targetRect = getTargetRect();
+          setModalRect(targetRect, '26px');
+          modal.style.opacity = '1';
+          modal.style.transform = 'scale(1)';
+          modal.classList.add('is-open');
+        });
+      });
+
+      const onEnd = (e) => {
+        if (e.target !== modal || e.propertyName !== 'width') return;
+        modal.removeEventListener('transitionend', onEnd);
+        isAnimating = false;
+      };
+      modal.addEventListener('transitionend', onEnd);
+
+      document.addEventListener('keydown', onKeydown);
+    }
+
+    function closeModal() {
+      if (isAnimating || !modal.classList.contains('is-visible')) return;
+      isAnimating = true;
+
+      // Đóng modal trực tiếp: fade + scale nhẹ, KHÔNG thu nhỏ về thẻ
+      modal.classList.remove('is-open');
+      modal.classList.add('is-closing');
+      backdrop.classList.remove('show');
+      modal.setAttribute('aria-hidden', 'true');
+
+      // Chỉ fade và scale nhẹ, giữ nguyên vị trí
+      const dur = prefersReducedMotion ? 0.01 : 0.35;
+      modal.style.transition =
+        'opacity ' + dur + 's ease, ' +
+        'transform ' + dur + 's ease';
+      modal.style.opacity = '0';
+      modal.style.transform = 'scale(0.95)';
+
+      const totalDelay = dur * 1000 + 60;
+      setTimeout(() => {
+        unlockScroll();
+        modal.classList.remove('is-visible', 'is-closing');
+        modal.style.opacity = '';
+        modal.style.transform = '';
+        modal.style.transition = 'none';
+        // Reset về kích thước nhỏ để lần sau zoom-in từ thẻ
+        pdfFrame.src = 'about:blank';
+        isAnimating = false;
+      }, totalDelay);
+
+      document.removeEventListener('keydown', onKeydown);
+    }
+
+    function onKeydown(e) {
+      if (e.key === 'Escape') closeModal();
+    }
+
+    // Click vào toàn bộ card
+    document.querySelectorAll('.assign-card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        if (e.target.closest('.pdf-open-tab')) return;
+        e.preventDefault();
+        openModal(this);
+      });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+
+    pdfFrame.addEventListener('load', () => {
+      if (!pdfFrame.src || pdfFrame.src.endsWith('about:blank')) return;
+      pdfFrame.classList.add('loaded');
+      pdfLoader.classList.add('hide');
+    });
+
+    window.addEventListener('resize', () => {
+      if (!modal.classList.contains('is-visible') || isAnimating || modal.classList.contains('is-closing')) return;
+      setModalRect(getTargetRect());
+    });
+  })();
 </script>
 </body>
 </html>
